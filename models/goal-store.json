@@ -1,0 +1,421 @@
+{
+  "goalCollection": [
+    {
+      "id": "8b4f8c70-d69c-11ea-a354-a1cc9cf532a2",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "03-August-2020 ",
+      "measurement": "BMI",
+      "currentMeasurement": 25.5,
+      "target": "26",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "944f5210-d69c-11ea-a354-a1cc9cf532a2",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "03-August-2020 ",
+      "measurement": "BMI",
+      "currentMeasurement": 25.5,
+      "target": "25",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "49206210-d69d-11ea-8b26-e55c8b22151f",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "06-August-2020 ",
+      "measurement": "BMI",
+      "currentMeasurement": 25.5,
+      "target": "34",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "be5379e0-d69e-11ea-9167-c1855570c3f4",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "03-August-2020 ",
+      "measurement": "BMI",
+      "currentMeasurement": 25.5,
+      "target": "56",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "223404c0-d69f-11ea-9a18-77782c121e1e",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "08-August-2020 ",
+      "measurement": "BMI",
+      "currentMeasurement": 25.5,
+      "target": "45",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "aaa8c030-db3f-11ea-8696-f7387ef1a0fb",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "05-August-2020 ",
+      "measurement": "BMI",
+      "currentMeasurement": 21.63,
+      "target": "22",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "76357860-db4a-11ea-9ae7-c9a214ae3b85",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "09-August-2020 ",
+      "measurement": "BMI",
+      "currentMeasurement": 21.63,
+      "target": "20",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "0d641910-db4d-11ea-9850-c31aebc1c539",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "11-August-2020 ",
+      "measurement": "BMI",
+      "currentMeasurement": 21.63,
+      "target": "21",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "5787fa50-db4f-11ea-a3a1-01764409b864",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "13-August-2020 ",
+      "measurement": "BMI",
+      "target": "67",
+      "status": "Closed",
+      "latestAssessmentForGoal": [],
+      "finalMeasurement": "No assessments completed before this date."
+    },
+    {
+      "id": "98ddbf30-db4f-11ea-a44c-1b3322d8d8d0",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "11-August-2020 ",
+      "measurement": "BMI",
+      "target": "26",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "9b0082b0-db50-11ea-874f-43fb945f57e3",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "09-August-2020 ",
+      "measurement": "Weight",
+      "currentMeasurement": 67,
+      "target": "66",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "a4532340-db50-11ea-874f-43fb945f57e3",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "09-August-2020 ",
+      "measurement": "Weight",
+      "currentMeasurement": 67,
+      "target": "68",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "b06001d0-db50-11ea-874f-43fb945f57e3",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "11-August-2020 ",
+      "measurement": "Weight",
+      "currentMeasurement": 67,
+      "target": "66",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "22cac750-db51-11ea-aece-57330d256b79",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "11-August-2020 ",
+      "measurement": "Weight",
+      "target": "65",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "2e2cca70-db52-11ea-b087-8f5bcd245236",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "10-August-2020 ",
+      "measurement": "Upper Arm",
+      "target": "8",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "434814a0-db52-11ea-b087-8f5bcd245236",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "10-August-2020 ",
+      "measurement": "Chest",
+      "target": "8",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "4dc8ade0-db52-11ea-b087-8f5bcd245236",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "10-August-2020 ",
+      "measurement": "Hips",
+      "target": "56",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "59b88e90-db52-11ea-b087-8f5bcd245236",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "10-August-2020 ",
+      "measurement": "Waist",
+      "target": "65",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "67f96420-db52-11ea-b087-8f5bcd245236",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "aN-undefined-NaN ",
+      "measurement": "Thigh",
+      "target": "68",
+      "status": "Not Applicable",
+      "finalMeasurement": "No assessments completed before this date",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "786d4650-db52-11ea-b087-8f5bcd245236",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "10-August-2020 ",
+      "measurement": "Thigh",
+      "target": "68",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "85103c90-dc11-11ea-b61d-fdd0e4291659",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "11-August-2020 ",
+      "measurement": "Chest",
+      "target": "8",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "97f0b1f0-dc11-11ea-b61d-fdd0e4291659",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "03-August-2020 ",
+      "measurement": "Weight",
+      "target": "31",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "f1045850-dc11-11ea-9585-9b021dfd4f5c",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "timestamp": "11-August-2020 ",
+      "measurement": "Weight",
+      "target": "97",
+      "status": "Open"
+    },
+    {
+      "id": "fa0c8260-dc11-11ea-9585-9b021dfd4f5c",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "timestamp": "10-August-2020 ",
+      "measurement": "Weight",
+      "target": "98",
+      "status": "Open"
+    },
+    {
+      "id": "28b787e0-dc12-11ea-9585-9b021dfd4f5c",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "10-August-2020 ",
+      "measurement": "Weight",
+      "target": "93",
+      "status": "Achieved",
+      "finalMeasurement": 92,
+      "latestAssessmentForGoal": [
+        {
+          "id": "1d6f9400-d590-11ea-b782-9bf43c853906",
+          "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+          "weight": 92,
+          "chest": 8,
+          "thigh": 8,
+          "upperArm": 8,
+          "waist": 8,
+          "hips": 8,
+          "timestamp": "03-August-2020 14:49:13",
+          "comment": "",
+          "negativeAssessmentTrend": false,
+          "emptyTrendLine": true,
+          "assessmentTrend": false
+        }
+      ]
+    },
+    {
+      "id": "34cc55b0-dc12-11ea-9585-9b021dfd4f5c",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "03-August-2020 ",
+      "measurement": "BMI",
+      "target": "56",
+      "status": "Closed",
+      "latestAssessmentForGoal": [],
+      "finalMeasurement": "No assessments completed before this date."
+    },
+    {
+      "id": "410075e0-dc13-11ea-be62-35b07a9962b4",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "04-August-2020 ",
+      "measurement": "Weight",
+      "target": "80",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "9a216d40-dc14-11ea-be62-35b07a9962b4",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "aN-undefined-NaN ",
+      "measurement": "Weight",
+      "target": "80",
+      "status": "Not Applicable",
+      "finalMeasurement": "No assessments completed before this date",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "25f7eb50-dc15-11ea-9546-fdb47e959a0e",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "August 3, 2020 9:35 PM",
+      "measurement": "Weight",
+      "target": "650",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "4a0c1070-dc15-11ea-9546-fdb47e959a0e",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "August 3, 2020 6:00 PM",
+      "measurement": "Weight",
+      "target": "31",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "395dd270-dc17-11ea-9d29-ab51fcabdb3d",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "2020-08-04",
+      "measurement": "Weight",
+      "target": "80",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "9adb18f0-dc17-11ea-99a5-9be0af9ad917",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "04-August-2020 ",
+      "measurement": "Thigh",
+      "target": "7",
+      "status": "Closed",
+      "finalMeasurement": "No assessments completed before this date.",
+      "latestAssessmentForGoal": []
+    },
+    {
+      "id": "8b914590-dc1c-11ea-9ecc-a143025fbcde",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "02-August-2020 ",
+      "measurement": "BMI",
+      "target": "4",
+      "status": "Closed",
+      "latestAssessmentForGoal": [],
+      "finalMeasurement": "No assessments completed before this date."
+    },
+    {
+      "id": "b5a8a910-e0c5-11ea-bea4-05c67fd17c94",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "timestamp": "18-August-2020 ",
+      "measurement": "Weight",
+      "target": "76",
+      "latestAssessmentForGoal": [],
+      "status": "Open",
+      "finalMeasurement": "Final measurement yet to be captured."
+    },
+    {
+      "id": "d62ae620-e0cb-11ea-99e8-8b93ba43a0bb",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "timestamp": "18-August-2020 ",
+      "measurement": "Weight",
+      "target": "89"
+    },
+    {
+      "id": "035fe610-e0cf-11ea-8094-99e0e755025c",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "18-August-2020 ",
+      "measurement": "Weight",
+      "target": "93",
+      "latestAssessmentForGoal": [
+        {
+          "id": "1d6f9400-d590-11ea-b782-9bf43c853906",
+          "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+          "weight": 92,
+          "chest": 8,
+          "thigh": 8,
+          "upperArm": 8,
+          "waist": 8,
+          "hips": 8,
+          "timestamp": "03-August-2020 14:49:13",
+          "comment": "",
+          "negativeAssessmentTrend": false,
+          "emptyTrendLine": true,
+          "assessmentTrend": false
+        }
+      ],
+      "status": "Open",
+      "finalMeasurement": "Final measurement yet to be captured."
+    },
+    {
+      "id": "d1d09a70-e0d0-11ea-ad3d-0767d6ff3012",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "18-August-2020 ",
+      "measurement": "BMI",
+      "target": "67"
+    },
+    {
+      "id": "dc6f1bf0-e0d0-11ea-ad3d-0767d6ff3012",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "18-August-2020 ",
+      "measurement": "Chest",
+      "target": "88"
+    },
+    {
+      "id": "e4885220-e0d0-11ea-ad3d-0767d6ff3012",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "18-August-2020 ",
+      "measurement": "Thigh",
+      "target": "79"
+    }
+  ]
+}

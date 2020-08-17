@@ -1,0 +1,56 @@
+{{> welcomemenu id="signup"}}
+
+<!--
+
+The sign up page allows new members to register.
+
+-->
+
+<div class="ui two column grid basic middle aligned segment">
+    <!--Start of column-->
+    <div class="column">
+        <form class="ui stacked segment form" action="/register" method="POST">
+            <h3 class="ui header">Register</h3>
+            <div class="two fields">
+                <div class="field">
+                    <label>Name</label>
+                    <input placeholder="Name" type="text" name="name">
+                </div>
+                <div class="field">
+                    <label>Gender</label>
+                    <input placeholder="Gender" type="text" name="gender">
+                </div>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input placeholder="Email" type="text" name="email">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="password">
+            </div>
+            <div class="field">
+                <label>Address</label>
+                <input type="text" name="address">
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>Height</label>
+                    <input placeholder="Height" type="text" name="height">
+                </div>
+                <div class="field">
+                    <label>Starting Weight</label>
+                    <input placeholder="Starting Weight" type="text" name="startingWeight">
+                </div>
+            </div>
+            <button class="ui blue submit button">Submit</button>
+        </form>
+    </div>
+    <!--End of column-->
+
+    <!--Start of column-->
+    <div class="column">
+        <img class="ui image" src="https://cdn.glitch.com/0a0827f0-515d-4bba-8237-feb833061164%2Fd4a53912-0235-47db-8a42-80eb206df4ab.image.png?v=1595173853074">
+    </div>
+    <!--End of column-->
+</div>

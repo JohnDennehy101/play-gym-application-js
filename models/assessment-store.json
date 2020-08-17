@@ -1,0 +1,122 @@
+{
+  "assessmentCollection": [
+    {
+      "id": "d475db10-d341-11ea-a8fa-b5dfc73f8706",
+      "userid": "b57a2f40-d341-11ea-a6d7-e1633b3df3f6",
+      "weight": 98,
+      "chest": 8,
+      "thigh": 8,
+      "upperArm": 78,
+      "waist": 89,
+      "hips": 8,
+      "timestamp": "Jul-31,-2020",
+      "comment": "",
+      "emptyTrendLine": true
+    },
+    {
+      "id": "196f0570-d342-11ea-8b13-93dd17a4f5f0",
+      "userid": "b57a2f40-d341-11ea-a6d7-e1633b3df3f6",
+      "weight": 32,
+      "chest": 8,
+      "thigh": 8,
+      "upperArm": 78,
+      "waist": 78,
+      "hips": 9,
+      "timestamp": "Jul-31,-2020",
+      "comment": "Good"
+    },
+    {
+      "id": "2a395390-d588-11ea-b413-03b5f1dc3c90",
+      "userid": "9ffcf650-d33e-11ea-b47b-d107da23fbd1",
+      "weight": 98,
+      "chest": 78,
+      "thigh": 8,
+      "upperArm": 7,
+      "waist": 8,
+      "hips": 8,
+      "timestamp": "03-August-2020 13:52:18",
+      "comment": "",
+      "negativeAssessmentTrend": false,
+      "emptyTrendLine": true,
+      "assessmentTrend": false
+    },
+    {
+      "id": "bf5f3de0-d588-11ea-be4f-afa8b1118a98",
+      "userid": "9ffcf650-d33e-11ea-b47b-d107da23fbd1",
+      "weight": 98,
+      "chest": 90,
+      "thigh": 90,
+      "upperArm": 90,
+      "waist": 90,
+      "hips": 90,
+      "timestamp": "03-August-2020 13:56:29",
+      "comment": "",
+      "equalWeight": true
+    },
+    {
+      "id": "4ccd24d0-d589-11ea-be4f-afa8b1118a98",
+      "userid": "9ffcf650-d33e-11ea-b47b-d107da23fbd1",
+      "weight": 97,
+      "chest": 8,
+      "thigh": 8,
+      "upperArm": 78,
+      "waist": 9,
+      "hips": 8,
+      "timestamp": "03-August-2020 14:00:26",
+      "comment": "",
+      "assessmentTrend": true
+    },
+    {
+      "id": "5357cbc0-d589-11ea-be4f-afa8b1118a98",
+      "userid": "9ffcf650-d33e-11ea-b47b-d107da23fbd1",
+      "weight": 98,
+      "chest": 8,
+      "thigh": 8,
+      "upperArm": 8,
+      "waist": 8,
+      "hips": 8,
+      "timestamp": "03-August-2020 14:00:37",
+      "comment": "",
+      "negativeAssessmentTrend": true
+    },
+    {
+      "id": "1d6f9400-d590-11ea-b782-9bf43c853906",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "weight": 92,
+      "chest": 8,
+      "thigh": 8,
+      "upperArm": 8,
+      "waist": 8,
+      "hips": 8,
+      "timestamp": "03-August-2020 14:49:13",
+      "comment": "",
+      "negativeAssessmentTrend": false,
+      "emptyTrendLine": true,
+      "assessmentTrend": false
+    },
+    {
+      "id": "d92ed420-e0c7-11ea-af7c-53ae98c5cfdd",
+      "userid": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "weight": 75,
+      "chest": 89,
+      "thigh": 90,
+      "upperArm": 7,
+      "waist": 90,
+      "hips": 78,
+      "timestamp": "17-August-2020 21:25:53",
+      "comment": ""
+    },
+    {
+      "id": "ba7635b0-e0d0-11ea-ad3d-0767d6ff3012",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "weight": 79,
+      "chest": 89,
+      "thigh": 78,
+      "upperArm": 68,
+      "waist": 89,
+      "hips": 78,
+      "timestamp": "17-August-2020 22:29:27",
+      "comment": ""
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<!--
+
+This partial is used to display a component when no assessments have been completed.
+It explains how the BMI (Body Mass Index), BMI category and ideal weight indicator were calculated.
+
+The jQuery code in the script tags is used to make the message interactive.
+If the user clicks the 'X' in the top right corner, the message disappears (due to fade transition being applied).
+
+-->
+
+<div class="ui message">
+    <i class="close icon"></i>
+    <div class="header">
+        0 Completed Assessments.
+    </div>
+    <p>No assessments have been completed.</p>
+    <ul class="list">
+        <li>BMI (Body Mass Index) was calculated using weight and height provided at registration.</li>
+        <li>The BMI calculation was used to determine the BMI category.</li>
+        <li>The BMI calculation was used with the Devine Formula to determine if the member is at the ideal
+            weight or not.
+        </li>
+    </ul>
+</div>
+
+<script>
+    $('.message .close')
+            .on('click', function () {
+                $(this)
+                        .closest('.message')
+                        .transition('fade')
+                ;
+            })
+    ;
+</script>

@@ -1,0 +1,28 @@
+{{> welcomemenu id='login' }}
+
+<!--
+The login page allows members and trainers to login
+-->
+
+<div class="ui two column middle aligned grid basic segment">
+    <!--Start of column-->
+    <div class="column">
+        <form class="ui stacked segment form" action="/authenticate" method="POST">
+            <h3 class="ui header">Log-in</h3>
+            <div class="field">
+                <label>Email</label> <input placeholder="Email" name="email">
+            </div>
+            <div class="field">
+                <label>Password</label> <input type="password" name="password">
+            </div>
+            <button class="ui blue submit button">Login</button>
+        </form>
+    </div>
+    <!--End of column-->
+
+    <!--Start of column-->
+    <div class="column">
+        <img class="ui image" src="https://cdn.glitch.com/0a0827f0-515d-4bba-8237-feb833061164%2Fd4a53912-0235-47db-8a42-80eb206df4ab.image.png?v=1595173853074">
+    </div>
+    <!--End of column-->
+</div>

@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "name": "Homer Simpson",
+      "height": 1.75,
+      "startingWeight": 78,
+      "gender": "male",
+      "email": "homer@simpson.com",
+      "password": "secret",
+      "id": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "totalAssessments": 4
+    },
+    {
+      "name": "Marge Simpson",
+      "height": 1.7,
+      "startingWeight": 75,
+      "gender": "female",
+      "email": "marge@simpson.com",
+      "password": "secret",
+      "id": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "totalAssessments": 0
+    },
+    {
+      "name": "Test4 Test5",
+      "gender": "Female",
+      "email": "123@gmail.com",
+      "password": "123",
+      "address": "Cork",
+      "height": "1.90",
+      "startingWeight": "90",
+      "id": "9ffcf650-d33e-11ea-b47b-d107da23fbd1",
+      "totalAssessments": 4
+    },
+    {
+      "name": "Test Test7",
+      "gender": "Male",
+      "email": "000@gmail.com",
+      "password": "000",
+      "address": "Dublin",
+      "height": "1.87",
+      "startingWeight": "88",
+      "id": "b57a2f40-d341-11ea-a6d7-e1633b3df3f6",
+      "totalAssessments": 2
+    },
+    {
+      "name": "Test3",
+      "gender": "Male",
+      "email": "111@gmail.com",
+      "password": "111",
+      "address": "Dublin",
+      "height": "1.76",
+      "startingWeight": "90",
+      "id": "4b16c570-d58d-11ea-975a-ab4d82638113"
+    }
+  ]
+}

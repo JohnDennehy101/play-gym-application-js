@@ -1,0 +1,28 @@
+<!--
+This is the menu displayed at the top of the page for logged in members.
+
+They can navigate to the following pages:
+
+Play Gym - Redirects member to sign up page
+Dashboard - Redirects member to member dashboard
+About - Redirects member to 'about' page which includes a brief description of the application.
+User Icon - Redirects member to 'edit details' page where user details are displayed and they can update existing profile
+information
+Logout - Logs member out. Login page rendered following logout.
+
+jQuery script is used to mark the active item in the menu (dependent on what page the member is on).
+-->
+
+<nav class="ui menu">
+    <header class="ui header item"><a href="/signup"> Play Gym</a></header>
+    <div class="right menu">
+        <a id="dashboard" class="item" href="/dashboard"> Dashboard </a>
+        <a id="about" class="item" href="/about"> About </a>
+        <a id="user" class="item" href="/viewAccountDetails"> <i class="user icon"></i></a>
+        <a id="logout" class="item" href="/logout"> Logout </a>
+    </div>
+</nav>
+
+<script>
+    $("#${_id}").addClass("active item");
+</script>
