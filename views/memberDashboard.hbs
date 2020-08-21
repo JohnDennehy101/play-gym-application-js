@@ -72,7 +72,7 @@
 </section>
   
   
-  
+  <h1 class="ui center aligned header">Goals</h1>
   
   <!--Table to display goal segment-->
   <table class="ui celled table">
@@ -87,8 +87,14 @@
 
     </thead>
     <tbody>
+      
       {{#each goals}}
-    <tr>
+     
+   
+    <!--<tr class="positive">-->
+      <tr class="{{setGoalBackground status}}">
+   
+     
 
 
         <td>
@@ -107,10 +113,13 @@
       
         <td>
         {{status}}
+          <i class="{{setGoalIcon status}}">
         </td>
        
       
       </tr>
+      
+    
       {{/each}}
       
     </tbody>
@@ -228,6 +237,8 @@ If the assessment weight is equal to the previous assessment weight, the 'ui gre
 
 The member can delete individual assessments.
 -->
+  
+  <h1 class="ui center aligned header">Completed Assessments</h1>
 {{#if completedAssessments}}
 <table class="ui celled table">
     <thead>

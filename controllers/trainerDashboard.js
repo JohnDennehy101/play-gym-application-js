@@ -2,9 +2,10 @@
 const accounts = require ('./accounts.js');
 const memberStore = require('../models/member-store');
 const assessmentStore = require('../models/assessment-store');
-const gymUtility = require('./gymUtility');
+//const gymUtility = require('./gymUtility');
 const goalStore = require('../models/goal-store');
 const uuid = require('uuid');
+const memberStats = require('../utils/member-stats');
 
 const trainerDashboard = {
   index(request, response) {
@@ -54,9 +55,9 @@ const trainerDashboard = {
     let assessmentTrend;
     let goals = goalStore.getUserGoals(member.id);
     if (orderedAssessments.length > 0) {
-      bmi = gymUtility.calculateBMI(member, orderedAssessments[0]);
-      bmiCategory = gymUtility.determineBMICategory(bmi);
-       isIdealWeight = gymUtility.isIdealBodyWeight(member, orderedAssessments[0]);
+      bmi = memberStats.calculateBMI(member, orderedAssessments[0]);
+      bmiCategory = memberStats.determineBMICategory(bmi);
+       isIdealWeight = memberStats.isIdealBodyWeight(member, orderedAssessments[0]);
     }
     else {
       height = member.height;
@@ -64,9 +65,9 @@ const trainerDashboard = {
             weight = member.startingWeight;
             bmi = weight / heightSquared;
             bmi = Math.floor(bmi * 100) / 100;
-       bmiCategory = gymUtility.determineBMICategory(bmi);
+       bmiCategory = memberStats.determineBMICategory(bmi);
       let assessment = {"weight": member.startingWeight};
-      isIdealWeight = gymUtility.isIdealBodyWeight(member, assessment);
+      isIdealWeight = memberStats.isIdealBodyWeight(member, assessment);
     }
     
     

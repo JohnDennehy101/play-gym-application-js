@@ -1,14 +1,6 @@
-"use strict";
-
-const logger = require("./logger");
+'use strict';
 const assessmentStore = require('../models/assessment-store');
-const goalStore = require('../models/goal-store');
-const uuid = require('uuid');
-const accounts = require ('../controllers/accounts.js');
-const gymUtility = require('../controllers/gymUtility.js');
-
 //const accounts = require ('./accounts.js');
-//const loggedInUser = accounts.getCurrentUser(request);
 let bmi;
 let height;
 let heightSquared;
@@ -22,18 +14,8 @@ let excessInches;
 let inchesWeight;
 let optimalMaleWeight;
 let optimalFemaleWeight;
-
-const analytics = {
-  
- /* memberStats (member) {
-  bmi: bmi
-}, */
-  calculateBMI(member, goalDate) {
-    
-    let assessments = assessmentStore.getUserAssessments(member.id);
-    let orderedAssessments = assessments.reverse();
-   
-    let assessment = orderedAssessments[0];
+const memberStats = {
+  calculateBMI(member, assessment) {
         height = member.height;
         heightSquared = height * height;
         weight = assessment.weight;
@@ -99,8 +81,294 @@ const analytics = {
         //Logger.info("Ideal Body Weight or not: " + idealWeight);
         //member.setIdealWeight(idealWeight);
         return idealWeight;
+    },
+  
+  sortGoals (goals) {
+    goals.sort(function (a, b) {
+    if (a.timestamp > b.timestamp) {
+        return -1;
     }
+    if (b.timestamp > a.timestamp) {
+        return 1;
+    }
+    return 0;
+});
+    
+    return goals;
+  },
+  
+  filterGoals (goals) {
+    goals = goals.filter((goal) => {
+      return (!goal.timestamp.includes("undefined-NaN") && goal.target !== 0);
+  });
+    return goals;
+  },
+  
+  
+  determineGoalsStatus (goals, orderedAssessments, user) {
+    let currentDate = new Date();
+    let assessments = assessmentStore.getUserAssessments(user.id);
+    let currentMeasurement;
+    goals.forEach((goal, index) => {
+      goal.latestAssessmentForGoal = [];
+        let assessmentMatch = [];
+    
+    
+     if (orderedAssessments.length === 0 && currentDate < Date.parse(goal.timestamp)) {
+          goal.status = 'Open';
+         goal.finalMeasurement = "Final measurement yet to be captured."
+          }
+      
+    
+      else if (orderedAssessments.length === 0 && currentDate > Date.parse(goal.timestamp)) {
+        goal.status = 'Closed';
+         goal.finalMeasurement = "No assessments completed before this date.";
+      }
+      
+  
+      else if (orderedAssessments.length > 0) {
+      
+        for (let i=0; i< orderedAssessments.length; i++) {
+
+       
+          if (Date.parse(orderedAssessments[i].timestamp) < Date.parse(goal.timestamp)) {
+       
+          if (goal.latestAssessmentForGoal.length < 1) {
+       
+            goal.latestAssessmentForGoal.push(orderedAssessments[i]);
+          }
+          else {
+            break;
+          }
+          
+       
+        
+        
+         
+              assessmentMatch.push(assessmentStore.getAssessmentByDate(orderedAssessments[i].timestamp));
+          
+         
+           if (assessmentMatch.length > 0) {
+         currentMeasurement = memberStats.calculateBMI(user, goal.latestAssessmentForGoal[0].weight);
+            
+           }
+          else {
+            height = user.height;
+      
+            heightSquared = height * height;
+            weight = user.startingWeight;
+            bmi = weight / heightSquared;
+            bmi = Math.floor(bmi * 100) / 100;
+            currentMeasurement = bmi
+           
+          }
+         
+      
+          
+          if (goal.measurement.toLowerCase() === "bmi") {
+           
+            if (assessmentMatch.length > 0 && currentDate < Date.parse(goal.timestamp)) {
+    
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement < goal.target) {
+        //goals[2].status = "Achieved";
+        goal.status = "Achieved";
+        goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+       
+        
+      }
+      else if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement > goal.target) {
+        goal.status = "Missed";
+        goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+     
+        
+      }
+         
+            else {
+        goal.status = "Open";
+              goal.finalMeasurement = "Final measurement yet to be captured."
+              assessmentMatch.splice(0);
+    
+      }
+              
+            } else {
+              goal.status = 'Closed';
+         goal.finalMeasurement = "No assessments completed before this date.";
+            }
+    }
+          
+    
+    else if (goal.measurement.toLowerCase() === "weight") {
+     
+      let weight = goal.latestAssessmentForGoal[0].weight;
+     currentMeasurement = weight;
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement < goal.target) {
+        goal.status = "Achieved";
+        goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+      
+      }
+      else if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement > goal.target) {
+        goal.status = "Missed";
+        goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+        
+      }
+      else {
+        goal.status = "Open";
+        goal.finalMeasurement = "Final measurement yet to be captured."
+        assessmentMatch.splice(0);
+        
+      }
+    }
+    
+     else if (goal.measurement.toLowerCase() === "chest") {
+    
+       let chest = goal.latestAssessmentForGoal[0].chest;
+          currentMeasurement = chest;
+     
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate &&  currentDate > Date.parse(goal.timestamp) && currentMeasurement < goal.target) {
+        goal.status = "Achieved";
+        assessmentMatch.splice(0);
+   
+        goal.finalMeasurement = currentMeasurement;
+      }
+      else if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate &&  currentDate > Date.parse(goal.timestamp) && currentMeasurement > goal.target) {
+        goal.status = "Missed";
+       goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+      }
+      else {
+        goal.status = "Open";
+        goal.finalMeasurement = "Final measurement yet to be captured."
+      }
+    }
+    
+     else if (goal.measurement.toLowerCase() === "thigh") {
+    
+       let thigh = goal.latestAssessmentForGoal[0].thigh;
+       //console.log(assessmentMatch[0].timestamp);
+         currentMeasurement = thigh;
+       //assessmentMatch.splice(0);
+     
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement < goal.target) {
+        goal.status = "Achieved";
+         goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+    
+      }
+      else if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement > goal.target) {
+        goal.status = "Missed";
+         goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+        
+      }
+      else {
+        goal.status = "Open";
+        goal.finalMeasurement = "Final measurement yet to be captured."
+      }
+    }
+    
+    else if (goal.measurement.toLowerCase() === "upper arm") {
+    
+      let upperArm = goal.latestAssessmentForGoal[0].upperArm;
+       currentMeasurement = upperArm;
+      //assessmentMatch.splice(0);
+     
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement < goal.target) {
+        goal.status = "Achieved";
+        goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+     
+      }
+      else if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement > goal.target) {
+        goal.status = "Missed";
+        goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+        
+      }
+      else {
+        goal.status = "Open";
+        goal.finalMeasurement = "Final measurement yet to be captured."
+      }
+    }
+    
+      else if (goal.measurement.toLowerCase() === "waist") {
+      //let waist = assessmentMatch[0].waist;
+        let waist = goal.latestAssessmentForGoal[0].waist;
+         currentMeasurement = waist;
+     
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) &&  currentMeasurement < goal.target) {
+        goal.status = "Achieved";
+        goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+     
+      }
+      else if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate &&  currentDate > Date.parse(goal.timestamp) && currentMeasurement > goal.target) {
+        goal.status = "Missed";
+        goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+      }
+      else {
+        goal.status = "Open";
+        goal.finalMeasurement = "Final measurement yet to be captured."
+      }
+    }
+    
+     else if (goal.measurement.toLowerCase() === "hips") {
+      //let hips = assessmentMatch[0].hips;
+       let hips = goal.latestAssessmentForGoal[0].hips;
+        currentMeasurement = hips;
+     
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) &&  currentMeasurement < goal.target) {
+        goal.status = "Achieved";
+         goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+     
+      }
+      else if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) &&  currentMeasurement > goal.target) {
+        goal.status = "Missed";
+         goal.finalMeasurement = currentMeasurement;
+        assessmentMatch.splice(0);
+         
+      }
+      else {
+        goal.status = "Open";
+        goal.finalMeasurement = "Final measurement yet to be captured."
+      }
+    }
+          
+        
+          
+        }
+        
+        else {
+              goal.status = 'Closed';
+         goal.finalMeasurement = "No assessments completed before this date.";
+            }
+          
+        }
+       /* else {
+          goal.status = "Not Applicable";
+          goal.finalMeasurement = "No assessments completed before this date";
+          
+        } */
+      }
+      
+      else {
+          goal.status = "Not Applicable";
+          goal.finalMeasurement = "No assessments completed before this date";
+          
+        } 
+        
+        
+     // }
+    })
+    
+    return goals;
+  }
   
 }
 
-module.exports = analytics;
+module.exports = memberStats;

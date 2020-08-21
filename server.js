@@ -16,7 +16,50 @@ app.engine(
   ".hbs",
   exphbs({
     extname: ".hbs",
-    defaultLayout: "main"
+    defaultLayout: "main",
+    helpers: {
+     setAssessmentText(numOfAssessments) {
+       if (numOfAssessments === 1) {
+         return "assessment";
+       }
+       else {
+         return "assessments";
+       }
+     },
+      
+    setGoalBackground (status) {
+      
+     
+      if (status.toLowerCase() === "achieved") {
+        return "positive"
+      }
+      else if (status.toLowerCase() === "open") {
+        return ""
+      }
+      else if (status.toLowerCase() === "closed") {
+        return "warning"
+      }
+      else {
+        return "negative"
+      }
+      
+    },
+      
+      setGoalIcon (status) {
+        if (status.toLowerCase() === "achieved") {
+        return "icon checkmark"
+      }
+      else if (status.toLowerCase() === "open") {
+        return ""
+      }
+      else if (status.toLowerCase() === "closed") {
+        return "attention icon"
+      }
+      else {
+        return "icon close"
+      }
+      }
+    }
   })
 );
 app.set("view engine", ".hbs");
