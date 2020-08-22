@@ -20,7 +20,7 @@
             <!--Start of Column-->
             <div class="column">
                 <div class="ui icon header">
-                {{#if assessmentTrend}}
+                {{#if isIdealWeight}}
                     <i class="tachometer alternate icon" style="color: green;"></i>
                     <p class="ui big text">IDEAL WEIGHT</p>
               
@@ -73,7 +73,7 @@
   
   
   <h1 class="ui center aligned header">Goals</h1>
-  
+  {{#if goalsSet}}
   <!--Table to display goal segment-->
   <table class="ui celled table">
     <thead>
@@ -91,14 +91,13 @@
       {{#each goals}}
      
    
-    <!--<tr class="positive">-->
       <tr class="{{setGoalBackground status}}">
    
      
 
 
         <td>
-       {{timestamp}}
+       {{formatDate timestamp}}
         </td>
         <td>
      {{measurement}}
@@ -125,6 +124,12 @@
     </tbody>
     
   </table>
+  
+  {{else}}
+  
+  {{> noGoalsSet}}
+  
+  {{/if}}
   
   
   <!--Form for setting goals-->
@@ -187,7 +192,7 @@
         <div class="two fields">
             <div class="field">
                 <label>Weight</label>
-                <input placeholder="00.00kg" type="number" name="weight">
+                <input placeholder="00.00kg" step="0.01" type="number" name="weight">
             </div>
             <div class="field">
                 <label>Chest</label>
@@ -238,8 +243,9 @@ If the assessment weight is equal to the previous assessment weight, the 'ui gre
 The member can delete individual assessments.
 -->
   
-  <h1 class="ui center aligned header">Completed Assessments</h1>
+  
 {{#if completedAssessments}}
+  <h1 class="ui center aligned header">Completed Assessments</h1>
 <table class="ui celled table">
     <thead>
     <tr>
@@ -284,46 +290,13 @@ The member can delete individual assessments.
         <td>
         {{hips}}
         </td>
-      <!--
-        {if } -->
-     
-       {{#if assessmentTrend}}
-        <!--#{elseif session_index < _assessments.size() && _assessments.get(session_index).weight > _assessments.get(session_index - 1).weight}-->
-            <td>
-                <i class="ui teal tag label"></i>
-            </td>
-           
-       {{/if}}
-      
-       
    
        
-        <!--#{elseif session_index < _assessments.size() && _assessments.get(session_index).weight < _assessments.get(session_index - 1).weight}
             <td>
-                <i class="ui red tag label"></i>
-            </td> -->
-     
-       
-        {{#if negativeAssessmentTrend}}
-        <!--#{elseif session_index < _assessments.size() && _assessments.get(session_index).weight == _assessments.get(session_index - 1).weight}-->
-            <td>
-                <i class="ui red tag label"></i>
+              
+              <i class="{{setAssessmentTrend trend}}"></i>
             </td>
-     
-       {{/if}}
-      
-      
-       {{#if emptyTrendLine}}
-      <td>
-      </td>
-       {{/if}}
-        
-          {{#if equalWeight}}
-           <td>
-                <i class="ui grey tag label"></i>
-            </td>
-      
-      {{/if}}
+  
       <td>
         {{comment}}
         </td>

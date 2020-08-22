@@ -1,0 +1,31 @@
+<!--
+
+This partial is used to display a component when no goals have been set.
+
+The jQuery code in the script tags is used to make the message interactive.
+If the user clicks the 'X' in the top right corner, the message disappears (due to fade transition being applied).
+
+-->
+
+<div class="ui message">
+    <i class="close icon"></i>
+    <div class="header">
+        0 Goals Set.
+    </div>
+    <p>No goals have been set.</p>
+    <ul class="list">
+        <li>To set a goal, use the form displayed below.</li>
+        <li>Goals can be set for each of the metrics used in assessments.</li>
+    </ul>
+</div>
+
+<script>
+    $('.message .close')
+            .on('click', function () {
+                $(this)
+                        .closest('.message')
+                        .transition('fade')
+                ;
+            })
+    ;
+</script>

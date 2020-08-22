@@ -15,11 +15,18 @@ let inchesWeight;
 let optimalMaleWeight;
 let optimalFemaleWeight;
 const memberStats = {
-  calculateBMI(member, assessment) {
-        height = member.height;
-        heightSquared = height * height;
-        weight = assessment.weight;
-        bmi = weight / heightSquared;
+ 
+  calculateBMI(member, assessments) {
+    let weight;
+     height = member.height;
+    heightSquared = height * height;
+    if (assessments.length > 0) {
+        weight = assessments[0].weight;
+    }
+    else {
+       weight = member.startingWeight; 
+    }
+    bmi = weight / heightSquared;
         bmi = Math.round(bmi * 100.0) / 100;
         //Logger.info("BMI value in GYM UTILITY " + bmi);
         return bmi;
@@ -44,9 +51,14 @@ const memberStats = {
 
     },
   
-  isIdealBodyWeight(member, assessment) {
+  isIdealBodyWeight(member, assessments) {
         idealWeight = false;
-        weight = assessment.weight;
+     if (assessments.length > 0) {
+        weight = assessments[0].weight;
+    }
+    else {
+       weight = member.startingWeight; 
+    }
         height = member.height;
         heightInCentimetres = height * 100;
         inches = heightInCentimetres * 0.393701;
@@ -55,6 +67,7 @@ const memberStats = {
         inchesWeight = excessInches * 2.3;
         optimalMaleWeight = 50 + inchesWeight;
         optimalFemaleWeight = 45.5 + inchesWeight;
+    
 
         if (feet < 5 && member.gender.toUpperCase().charAt(0) == 'M') {
             optimalMaleWeight = 50;
@@ -169,7 +182,7 @@ const memberStats = {
            
             if (assessmentMatch.length > 0 && currentDate < Date.parse(goal.timestamp)) {
     
-      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement < goal.target) {
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement <= goal.target) {
         //goals[2].status = "Achieved";
         goal.status = "Achieved";
         goal.finalMeasurement = currentMeasurement;
@@ -202,8 +215,9 @@ const memberStats = {
     else if (goal.measurement.toLowerCase() === "weight") {
      
       let weight = goal.latestAssessmentForGoal[0].weight;
+      
      currentMeasurement = weight;
-      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement < goal.target) {
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement <= goal.target) {
         goal.status = "Achieved";
         goal.finalMeasurement = currentMeasurement;
         assessmentMatch.splice(0);
@@ -228,7 +242,7 @@ const memberStats = {
        let chest = goal.latestAssessmentForGoal[0].chest;
           currentMeasurement = chest;
      
-      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate &&  currentDate > Date.parse(goal.timestamp) && currentMeasurement < goal.target) {
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate &&  currentDate > Date.parse(goal.timestamp) && currentMeasurement <= goal.target) {
         goal.status = "Achieved";
         assessmentMatch.splice(0);
    
@@ -252,7 +266,7 @@ const memberStats = {
          currentMeasurement = thigh;
        //assessmentMatch.splice(0);
      
-      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement < goal.target) {
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement <= goal.target) {
         goal.status = "Achieved";
          goal.finalMeasurement = currentMeasurement;
         assessmentMatch.splice(0);
@@ -276,7 +290,7 @@ const memberStats = {
        currentMeasurement = upperArm;
       //assessmentMatch.splice(0);
      
-      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement < goal.target) {
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement <= goal.target) {
         goal.status = "Achieved";
         goal.finalMeasurement = currentMeasurement;
         assessmentMatch.splice(0);
@@ -299,7 +313,7 @@ const memberStats = {
         let waist = goal.latestAssessmentForGoal[0].waist;
          currentMeasurement = waist;
      
-      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) &&  currentMeasurement < goal.target) {
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) &&  currentMeasurement <= goal.target) {
         goal.status = "Achieved";
         goal.finalMeasurement = currentMeasurement;
         assessmentMatch.splice(0);
@@ -321,7 +335,7 @@ const memberStats = {
        let hips = goal.latestAssessmentForGoal[0].hips;
         currentMeasurement = hips;
      
-      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) &&  currentMeasurement < goal.target) {
+      if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) &&  currentMeasurement <= goal.target) {
         goal.status = "Achieved";
          goal.finalMeasurement = currentMeasurement;
         assessmentMatch.splice(0);
@@ -367,8 +381,72 @@ const memberStats = {
     })
     
     return goals;
-  }
+  },
   
+  determineAssessmentTrend (orderedAssessments) {
+       if (orderedAssessments.length > 0) {
+        //numOfAssessments = true;
+        if (orderedAssessments.length === 1) {
+           orderedAssessments[0].trend = "Not Applicable";
+        }
+        
+      
+    if (orderedAssessments.length >= 2) {
+      
+          for (let i=0; i < orderedAssessments.length; i++)  {
+            
+            if (orderedAssessments.length - i === 1) {
+               orderedAssessments[(orderedAssessments.length - 1)].trend = "Not Applicable";
+              break;
+            }
+            
+            else if (orderedAssessments[(i)].weight < orderedAssessments[(i + 1)].weight) {
+             
+              orderedAssessments[i].trend = "Positive";
+             
+            }
+            else if (orderedAssessments[i].weight > orderedAssessments[(i + 1)].weight) {
+            
+              orderedAssessments[i].trend = "Negative";
+            
+            }
+            else {
+              
+              orderedAssessments[i].trend = "Neutral";
+            }
+           
+          }   
+      
+       
+    } 
+        
+         }
+    
+     else {
+     
+    }
+    
+   
+    return orderedAssessments;
+  },
+  
+  calculateNumberOfAssessments (orderedAssessments) {
+     if (orderedAssessments.length > 0) {
+       return true;
+  }
+    else {
+     return false;
+    }
+    
+  },
+  calculateNumberOfGoals (goals) {
+     if (goals.length > 0) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }
 
 module.exports = memberStats;

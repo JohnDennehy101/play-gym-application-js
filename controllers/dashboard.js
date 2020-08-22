@@ -22,7 +22,16 @@ const dashboard = {
     let match = false;
    let currentDate = new Date();
     let currentMeasurement;
-    //let validGoalAssessments = [];
+       let bmi = 0;
+    let height = 0;
+    let heightSquared = 0;
+    let weight = 0;
+    let bmiCategory;
+    let isIdealWeight;
+    let assessmentTrend;
+    let counter = 0;
+    let numOfAssessments;
+    let numOfGoals;
     
     //Sort Assessments by Date
     goals = memberStats.sortGoals(goals);
@@ -35,80 +44,31 @@ const dashboard = {
    
     
     //Formatting current date to correct format
-    let formattedDate = conversion.formatDate(currentDate);
+    let formattedDate = conversion.formatDateWithoutTime(currentDate);
+ 
    
     
-    let bmi = 0;
-    let height = 0;
-    let heightSquared = 0;
-    let weight = 0;
-    let bmiCategory;
-    let isIdealWeight;
-    let assessmentTrend;
-    let counter = 0;
-    let numOfAssessments;
     
     loggedInUser.name = loggedInUser.name.toUpperCase();
-      if (orderedAssessments.length > 0) {
-        numOfAssessments = true;
-        if (orderedAssessments.length === 1) {
-           orderedAssessments[0].emptyTrendLine = true;
-        }
-        
-     
-      bmi = memberStats.calculateBMI(loggedInUser, orderedAssessments[0]);
-        
     
-      bmiCategory = memberStats.determineBMICategory(bmi);
-       isIdealWeight = memberStats.isIdealBodyWeight(loggedInUser, orderedAssessments[0]);
-      
-    if (orderedAssessments.length >= 2) {
-      
-          for (let i=0; i < orderedAssessments.length; i++)  {
-            
-            if (orderedAssessments.length - i === 1) {
-               orderedAssessments[(orderedAssessments.length - 1)].emptyTrendLine = true;
-               orderedAssessments[i].assessmentTrend = false;
-               orderedAssessments[i].negativeAssessmentTrend = false;
-              break;
-            }
-            
-            else if (orderedAssessments[(i)].weight < orderedAssessments[(i + 1)].weight) {
-              orderedAssessments[i].assessmentTrend = true;
-             
-            }
-            else if (orderedAssessments[i].weight > orderedAssessments[(i + 1)].weight) {
-              orderedAssessments[i].negativeAssessmentTrend = true;
-            
-            }
-            else {
-              orderedAssessments[i].equalWeight = true;
-            }
-           
-          }   
-      
-       
-    } 
-        
-         }
-    else {
-      numOfAssessments = false;
-      height = loggedInUser.height;
-      
-            heightSquared = height * height;
-      //console.log(typeof heightSquared);
-            weight = loggedInUser.startingWeight;
-      //console.log(weight);
-            bmi = weight / heightSquared;
-      
-            bmi = Math.floor(bmi * 100) / 100;
-     
-       bmiCategory = memberStats.determineBMICategory(bmi);
-      let assessment = {"weight": loggedInUser.startingWeight};
-      isIdealWeight = memberStats.isIdealBodyWeight(loggedInUser, assessment);
-    }
+    //Looping through the ordered assessments to determine the assessment trend for each assessment (positive, negative, neutral, not applicable)
+    orderedAssessments = memberStats.determineAssessmentTrend(orderedAssessments, numOfAssessments);
     
-  
+    //Determining if the user has completed assessments or not
+   numOfAssessments = memberStats.calculateNumberOfAssessments (orderedAssessments);
+    
+    //Determining if the user/trainer has set goals for the user or not
+    numOfGoals = memberStats.calculateNumberOfGoals(goals);
+    
+    //Calculating member's BMI
+    bmi = memberStats.calculateBMI(loggedInUser, orderedAssessments);
+    
+    //Calculating member's BMI category
+    bmiCategory = memberStats.determineBMICategory(bmi);
+    
+    //Determining if user is at ideal weight or not
+    isIdealWeight = memberStats.isIdealBodyWeight(loggedInUser, orderedAssessments);
+ 
    
     const viewData = {
       title: 'User Dashboard',
@@ -119,6 +79,7 @@ const dashboard = {
       isIdealWeight: isIdealWeight,
       trend: assessmentTrend,
       completedAssessments: numOfAssessments,
+      goalsSet: numOfGoals,
       goals: goals
     };
     //logger.info('about to render', assessmentStore.getAllAssessments());
@@ -126,15 +87,11 @@ const dashboard = {
   },
   
     addAssessment(request, response) {
-      let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const loggedInUser = accounts.getCurrentUser(request);
-    const date = new Date();
-   let timeStamp = new Date();
-      //console.log(timeStamp);
-let month = timeStamp.getMonth();
-let hour = ("0" + (timeStamp.getHours() + 1)).slice(-2);
-let formattedDate = ("0" + timeStamp.getDate()).slice(-2) + "-" + (months[month] + "-" +
-    timeStamp.getFullYear() + " " + hour + ":" + ("0" + timeStamp.getMinutes()).slice(-2) + ":"  + ("0" + timeStamp.getSeconds()).slice(-2));
+    let currentDate = new Date();
+      
+      //Formatting current date to correct format
+    let formattedDate = conversion.formatDateWithTime(currentDate);
       
      
       
@@ -160,15 +117,13 @@ let formattedDate = ("0" + timeStamp.getDate()).slice(-2) + "-" + (months[month]
     let orderedAssessments = assessments.reverse();
     let currentMeasurement;
     let goalStatus;
-     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-   let timeStamp = new Date(request.body.date + "Z"); //new Date('2011-04-11T10:20:30Z')
-  let currentDate = new Date();
-    let month = timeStamp.getMonth();
-let hour = ("0" + (timeStamp.getHours() + 1)).slice(-2);
-let formattedDate = ("0" + timeStamp.getDate()).slice(-2) + "-" + (months[month] + "-" +
-    timeStamp.getFullYear() + " "); 
     
-    //Getting current measurements and storing relevant info in currentMeasurement variable
+   let timeStamp = new Date(request.body.date + "Z");
+  let currentDate = new Date();
+   
+    let formattedDate = conversion.formatGoalDate(timeStamp);
+    
+  
      let bmi;
 
     

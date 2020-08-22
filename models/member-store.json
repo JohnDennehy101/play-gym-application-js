@@ -11,7 +11,7 @@
       "totalAssessments": 4
     },
     {
-      "name": "Marge Simpson",
+      "name": "MARGE SIMPSON",
       "height": 1.7,
       "startingWeight": 75,
       "gender": "female",
@@ -43,7 +43,7 @@
       "totalAssessments": 2
     },
     {
-      "name": "Test3",
+      "name": "TEST3",
       "gender": "Male",
       "email": "111@gmail.com",
       "password": "111",
@@ -51,6 +51,16 @@
       "height": "1.76",
       "startingWeight": "90",
       "id": "4b16c570-d58d-11ea-975a-ab4d82638113"
+    },
+    {
+      "name": "Test Test10",
+      "gender": "Male",
+      "email": "456@gmail.com",
+      "password": "456",
+      "address": "Mallow",
+      "height": "1.84",
+      "startingWeight": "65",
+      "id": "07a28fc0-e467-11ea-a033-ad1b2bf71f78"
     }
   ]
 }

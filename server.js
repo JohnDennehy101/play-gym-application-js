@@ -58,6 +58,28 @@ app.engine(
       else {
         return "icon close"
       }
+      },
+      
+      setAssessmentTrend (trend) {
+        if (trend.toLowerCase() === "not applicable") {
+          return "";
+        }
+        else if (trend.toLowerCase() === "positive") {
+          return "ui teal tag label";
+        }
+         else if (trend.toLowerCase() === "negative") {
+          return "ui red tag label";
+        }
+        else if (trend.toLowerCase() === "neutral") {
+          return "ui grey tag label"
+        }
+    
+      },
+      
+      formatDate (date) {
+        let time = date.indexOf("23:59:59");
+        date = date.substr(0, time);
+        return date;
       }
     }
   })
