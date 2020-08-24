@@ -5,7 +5,6 @@ const assessmentStore = require('../models/assessment-store');
 const goalStore = require('../models/goal-store');
 const uuid = require('uuid');
 const accounts = require ('./accounts.js');
-//const gymUtility = require('./gymUtility.js');
 const memberStats = require('../utils/member-stats');
 const conversion = require('../utils/conversion');
 
@@ -46,10 +45,6 @@ const dashboard = {
     //Formatting current date to correct format
     let formattedDate = conversion.formatDateWithoutTime(currentDate);
  
-   
-    
-    
-    loggedInUser.name = loggedInUser.name.toUpperCase();
     
     //Looping through the ordered assessments to determine the assessment trend for each assessment (positive, negative, neutral, not applicable)
     orderedAssessments = memberStats.determineAssessmentTrend(orderedAssessments, numOfAssessments);
@@ -144,6 +139,13 @@ const dashboard = {
     response.redirect('/dashboard');
     
     
+  },
+  
+  deleteGoal (request, response) {
+  const goalId = request.params.id;
+  logger.info('Assessment to be deleted = ' + goalId);
+  goalStore.removeGoal(goalId);
+  response.redirect('/dashboard'); 
   },
   
    deleteAssessment(request, response) {

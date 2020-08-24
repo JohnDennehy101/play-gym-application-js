@@ -6,7 +6,7 @@
       "timestamp": "22-August-2020 23:59:59",
       "measurement": "Weight",
       "target": 83,
-      "status": "Open",
+      "status": "Achieved",
       "latestAssessmentForGoal": [
         {
           "id": "b5f4ff60-e46a-11ea-aceb-e142aad1bcc6",
@@ -22,39 +22,80 @@
           "trend": "Negative"
         }
       ],
-      "finalMeasurement": "Final measurement yet to be captured."
-    },
-    {
-      "id": "8d656010-e471-11ea-a378-774ddb22e761",
-      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "timestamp": "21-August-2020 23:59:59",
-      "measurement": "Weight",
-      "target": 80,
-      "status": "Achieved",
-      "latestAssessmentForGoal": [
-        {
-          "id": "b43fb6b0-e398-11ea-8074-97122993cbc1",
-          "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-          "weight": 80,
-          "chest": 7,
-          "thigh": 8,
-          "upperArm": 9,
-          "waist": 0,
-          "hips": 7,
-          "timestamp": "21-August-2020 11:25:58",
-          "comment": "",
-          "negativeAssessmentTrend": true,
-          "trend": "Negative"
-        }
-      ],
-      "finalMeasurement": 80
+      "finalMeasurement": 82
     },
     {
       "id": "9e3bfbb0-e471-11ea-a378-774ddb22e761",
       "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
       "timestamp": "17-August-2020 23:59:59",
       "measurement": "Chest",
-      "target": 88
+      "target": 88,
+      "latestAssessmentForGoal": [
+        {
+          "id": "ba7635b0-e0d0-11ea-ad3d-0767d6ff3012",
+          "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+          "weight": 79,
+          "chest": 89,
+          "thigh": 78,
+          "upperArm": 68,
+          "waist": 89,
+          "hips": 78,
+          "timestamp": "17-August-2020 22:29:27",
+          "comment": "",
+          "assessmentTrend": true,
+          "trend": "Positive"
+        }
+      ],
+      "status": "Missed",
+      "finalMeasurement": 89
+    },
+    {
+      "id": "b0b6c7c0-e5ed-11ea-80f9-d101b33c5064",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "22-August-2020 23:59:59",
+      "measurement": "Thigh",
+      "target": 10,
+      "status": "Achieved",
+      "latestAssessmentForGoal": [
+        {
+          "id": "b5f4ff60-e46a-11ea-aceb-e142aad1bcc6",
+          "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+          "weight": 82,
+          "chest": 97,
+          "thigh": 9,
+          "upperArm": 78,
+          "waist": 68,
+          "hips": 89,
+          "timestamp": "22-August-2020 12:29:15",
+          "comment": "",
+          "trend": "Negative"
+        }
+      ],
+      "finalMeasurement": 9
+    },
+    {
+      "id": "cd692d90-e5f2-11ea-b7c6-f9b6254d073d",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "24-August-2020 23:59:59",
+      "measurement": "Upper Arm",
+      "target": 78,
+      "latestAssessmentForGoal": [
+        {
+          "id": "b5f4ff60-e46a-11ea-aceb-e142aad1bcc6",
+          "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+          "weight": 82,
+          "chest": 97,
+          "thigh": 9,
+          "upperArm": 78,
+          "waist": 68,
+          "hips": 89,
+          "timestamp": "22-August-2020 12:29:15",
+          "comment": "",
+          "trend": "Negative"
+        }
+      ],
+      "status": "Open",
+      "finalMeasurement": "Final measurement yet to be captured."
     }
   ]
 }

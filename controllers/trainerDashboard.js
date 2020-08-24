@@ -2,7 +2,6 @@
 const accounts = require ('./accounts.js');
 const memberStore = require('../models/member-store');
 const assessmentStore = require('../models/assessment-store');
-//const gymUtility = require('./gymUtility');
 const goalStore = require('../models/goal-store');
 const uuid = require('uuid');
 const memberStats = require('../utils/member-stats');
@@ -129,6 +128,17 @@ let formattedDate = ("0" + timeStamp.getDate()).slice(-2) + "-" + (months[month]
     goalStore.addGoal(newGoal);
     response.redirect('/member/' + request.params.userid);
     
+  },
+  
+  deleteGoal (request, response) {
+    //const member = memberStore.getUserById(request.params.userid);
+    //const goal = goalStore.getGoal(request.params.id);
+    
+    const goal = goalStore.getGoal(request.params.id);
+    const memberId = goal.userid;
+    
+    goalStore.removeGoal(goal.id);
+   response.redirect('/member/' + memberId);
   }
   
   

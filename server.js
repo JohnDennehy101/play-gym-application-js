@@ -80,6 +80,10 @@ app.engine(
         let time = date.indexOf("23:59:59");
         date = date.substr(0, time);
         return date;
+      },
+      
+      makeNameUppercase (name) {
+        return name.toUpperCase();
       }
     }
   })
