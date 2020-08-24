@@ -40,10 +40,6 @@ const dashboard = {
     
     //Loop through each goal to determine the current goal status for each goal
     goals = memberStats.determineGoalsStatus(goals, orderedAssessments, loggedInUser);
-   
-    
-    //Formatting current date to correct format
-    let formattedDate = conversion.formatDateWithoutTime(currentDate);
  
     
     //Looping through the ordered assessments to determine the assessment trend for each assessment (positive, negative, neutral, not applicable)
@@ -129,7 +125,6 @@ const dashboard = {
       id: uuid.v1(),
       userid: loggedInUser.id,
       timestamp: formattedDate,
-       //timestamp: request.body.date,
       measurement: request.body.measurement,
       currentMeasurement: currentMeasurement,
       target: Number(request.body.target),

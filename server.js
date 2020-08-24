@@ -84,6 +84,21 @@ app.engine(
       
       makeNameUppercase (name) {
         return name.toUpperCase();
+      },
+      
+      makeFirstLetterOfNameUpperCase (name) {
+        let fullName = "";
+        let nameComponents = name.split(" ");
+        let formattedNameComponents = nameComponents.map((name) => 
+       name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+      );
+     formattedNameComponents = formattedNameComponents.map((nameFragment) => {
+        
+         fullName += nameFragment + " ";
+          
+        }); 
+        
+        return fullName;
       }
     }
   })

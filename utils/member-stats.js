@@ -439,6 +439,15 @@ const memberStats = {
     }
     
   },
+  
+  calculateTotalAssessmentsFigure (members) {
+    members.forEach((member) => {
+      member.totalAssessments = assessmentStore.getUserAssessments(member.id).length;
+    });
+    
+    return members;
+  },
+  
   calculateNumberOfGoals (goals) {
      if (goals.length > 0) {
       return true;

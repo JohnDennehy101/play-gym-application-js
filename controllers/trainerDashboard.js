@@ -5,36 +5,20 @@ const assessmentStore = require('../models/assessment-store');
 const goalStore = require('../models/goal-store');
 const uuid = require('uuid');
 const memberStats = require('../utils/member-stats');
+const conversion = require('../utils/conversion');
 
 const trainerDashboard = {
   index(request, response) {
     let totalAssessments;
     const loggedInTrainer = accounts.getCurrentTrainer(request);
-    const allMembers = memberStore.getAllUsers();
+    let allMembers = memberStore.getAllUsers();
     
-    allMembers.forEach((member) => {
-      
-      //console.log(totalAssessments);
-      let nameComponents = member.name.split(" ");
-      let formattedNameComponents = nameComponents.map((name) => 
-       name.charAt(0).toUpperCase() + name.slice(1)
-      )
-        if (formattedNameComponents.length === 1) {
-          member.name = formattedNameComponents[0];
-        }
-      else {
-        member.name = `${formattedNameComponents[0]} ${formattedNameComponents[1]}`;
-      }
-     
+    //Calculating the number of assessments for each member
+    allMembers = memberStats.calculateTotalAssessmentsFigure(allMembers);
     
-      //`${formattedNameComponents[0]} ${formattedNameComponents[1]}`;
-      member.totalAssessments = assessmentStore.getUserAssessments(member.id).length;
-    })
-    
-      //console.log(totalAssessments);
+  
     const viewData = {
       members: allMembers,
-      //totalAssessments: totalAssessments,
     }
     
     response.render('trainerDashboard', viewData);
@@ -53,7 +37,35 @@ const trainerDashboard = {
     let isIdealWeight;
     let assessmentTrend;
     let goals = goalStore.getUserGoals(member.id);
-    if (orderedAssessments.length > 0) {
+    let numOfAssessments;
+    let numOfGoals;
+    
+    //Sort Assessments by Date
+    goals = memberStats.sortGoals(goals);
+    
+    //Remove assessments where date or numeric figure for measurement have not been provided
+    goals = memberStats.filterGoals(goals);
+    
+    //Loop through each goal to determine the current goal status for each goal
+    goals = memberStats.determineGoalsStatus(goals, orderedAssessments, member);
+   
+    
+    //Determining if the user has completed assessments or not
+   numOfAssessments = memberStats.calculateNumberOfAssessments (orderedAssessments);
+    
+    //Determining if the user/trainer has set goals for the user or not
+    numOfGoals = memberStats.calculateNumberOfGoals(goals);
+    
+    //Calculating member's BMI
+    bmi = memberStats.calculateBMI(member, orderedAssessments);
+    
+    //Calculating member's BMI category
+    bmiCategory = memberStats.determineBMICategory(bmi);
+    
+    //Determining if user is at ideal weight or not
+    isIdealWeight = memberStats.isIdealBodyWeight(member, orderedAssessments);
+    
+   /* if (orderedAssessments.length > 0) {
       bmi = memberStats.calculateBMI(member, orderedAssessments[0]);
       bmiCategory = memberStats.determineBMICategory(bmi);
        isIdealWeight = memberStats.isIdealBodyWeight(member, orderedAssessments[0]);
@@ -67,7 +79,7 @@ const trainerDashboard = {
        bmiCategory = memberStats.determineBMICategory(bmi);
       let assessment = {"weight": member.startingWeight};
       isIdealWeight = memberStats.isIdealBodyWeight(member, assessment);
-    }
+    } */
     
     
     
@@ -78,7 +90,9 @@ const trainerDashboard = {
       bmiCategory: bmiCategory,
       isIdealWeight: isIdealWeight,
       trend: assessmentTrend,
-      goals: goals
+      goals: goals,
+      completedAssessments: numOfAssessments,
+      goalsSet: numOfGoals
     }
      response.render('trainerViewMember', viewData);
   },
@@ -104,25 +118,24 @@ const trainerDashboard = {
     let orderedAssessments = assessments.reverse();
     let currentMeasurement;
     let goalStatus;
-     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-   let timeStamp = new Date(request.body.date + "Z"); //new Date('2011-04-11T10:20:30Z')
+     
+   let timeStamp = new Date(request.body.date + "Z"); 
   let currentDate = new Date();
-    let month = timeStamp.getMonth();
-let hour = ("0" + (timeStamp.getHours() + 1)).slice(-2);
-let formattedDate = ("0" + timeStamp.getDate()).slice(-2) + "-" + (months[month] + "-" +
-    timeStamp.getFullYear() + " "); 
+
+    //Formatting date
+    let formattedDate = conversion.formatGoalDate(timeStamp);
     
     //Getting current measurements and storing relevant info in currentMeasurement variable
      let bmi;
+    
     
       const newGoal = {
       id: uuid.v1(),
       userid: member.id,
       timestamp: formattedDate,
-       //timestamp: request.body.date,
       measurement: request.body.measurement,
       currentMeasurement: currentMeasurement,
-      target: request.body.target,
+      target: Number(request.body.target),
       status: goalStatus
     };
     goalStore.addGoal(newGoal);
@@ -131,8 +144,6 @@ let formattedDate = ("0" + timeStamp.getDate()).slice(-2) + "-" + (months[month]
   },
   
   deleteGoal (request, response) {
-    //const member = memberStore.getUserById(request.params.userid);
-    //const goal = goalStore.getGoal(request.params.id);
     
     const goal = goalStore.getGoal(request.params.id);
     const memberId = goal.userid;

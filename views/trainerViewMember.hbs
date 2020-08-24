@@ -11,7 +11,7 @@
             <div class="column">
                 <div class="ui icon header">
                     <i class="user icon"></i>
-                {{user.name}}
+                {{makeNameUppercase user.name}}
                 </div>
 
             </div>
@@ -71,8 +71,8 @@
     </div>
 </section>
   
-  
-  
+  <h1 class="ui center aligned header">Goals</h1>
+  {{#if goalsSet}}
   <!--Table to display goal segment-->
   <table class="ui celled table">
     <thead>
@@ -88,11 +88,11 @@
     </thead>
     <tbody>
       {{#each goals}}
-    <tr>
+    <tr class="{{setGoalBackground status}}">
 
 
         <td>
-       {{timestamp}}
+       {{formatDate timestamp}}
         </td>
         <td>
      {{measurement}}
@@ -107,6 +107,7 @@
       
         <td>
         {{status}}
+          <i class="{{setGoalIcon status}}">
         </td>
       
        <td>
@@ -123,6 +124,12 @@
     </tbody>
     
   </table>
+  
+  {{else}}
+  
+  {{> noGoalsSet}}
+  
+  {{/if}}
   
   
  
@@ -195,8 +202,10 @@ how the BMI (Body Mass Index), BMI category and ideal weight indicator were calc
 The trainer can return to the list of members by clicking the button at the bottom of the page.
 
 -->
-
+<h1 class="ui center aligned header">Completed Assessments</h1>
+ 
 <section class="ui raised segment">
+   {{#if completedAssessments}}
 {{#each assessments}}
     <!--#{if _assessments.size() > 0}-->
         <table class="ui celled table">
@@ -251,6 +260,8 @@ The trainer can return to the list of members by clicking the button at the bott
 
 
         </table>
+  
+ 
 
     <!--#{/if}-->
 
@@ -265,6 +276,10 @@ The trainer can return to the list of members by clicking the button at the bott
     </form>
 
 {{/each}}
+  
+   {{else}}
+   {{> noCompletedAssessments}}
+  {{/if}} 
 <!--#{else}
 
     #{noAssessmentsCompleted /}
