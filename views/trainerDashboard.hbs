@@ -2,7 +2,7 @@
 
 <section class="ui raised segment">
     <div class="ui relaxed divided list">
-    <!--#{list items:members, as:'member'}-->
+   
 {{#each members}}
         <div class="item">
 
@@ -16,23 +16,14 @@
                     </a>
                 </div>
 
-
-                <!--#{if member.numberOfAssessments == 1}-->
-                    <div class="description"><!--${member.numberOfAssessments} assessment--></div>
-
-               <div class="description"><!--${member.numberOfAssessments} assessments--> {{totalAssessments}} {{setAssessmentText totalAssessments}}</div>
-               
-                    
-
+               <div class="description"> {{totalAssessments}} {{setAssessmentText totalAssessments}}</div>
               
-
-
             </div>
 
 
         </div>
 {{/each}}
-    <!--#{/list}-->
+   
 
 
 </section>

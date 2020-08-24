@@ -99,6 +99,21 @@ app.engine(
         }); 
         
         return fullName;
+      },
+      
+      setIdealWeightIconColour (idealWeight) {
+        if (idealWeight) {
+          return "green";
+        } else {
+          return "red";
+        }
+      },
+      setIdealWeightText (idealWeight) {
+        if (idealWeight) {
+          return "IDEAL WEIGHT";
+        } else {
+          return "NOT IDEAL WEIGHT";
+        }
       }
     }
   })

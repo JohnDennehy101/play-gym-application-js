@@ -1,0 +1,62 @@
+<section class="ui raised segment">
+    <div class="ui four column stackable center aligned grid">
+
+        <div class="middle aligned row">
+            <!--Start of Column-->
+            <div class="column">
+                <div class="ui icon header">
+                    <i class="user icon"></i>
+                {{makeNameUppercase user.name}}
+                </div>
+
+            </div>
+            <!--End of Column-->
+
+            <!--Start of Column-->
+            <div class="column">
+                <div class="ui icon header">
+            
+                  <i class="tachometer alternate icon" style="color: {{setIdealWeightIconColour isIdealWeight}};"></i>
+                    <p class="ui big text">{{setIdealWeightText isIdealWeight}}</p>
+
+                </div>
+
+            </div>
+            <!--End of Column-->
+
+            <!--Start of Column -->
+            <div class="column">
+
+                <div class="ui items">
+                    <div class="item">
+                        <div class="middle aligned content">
+                            <div class="header">
+                                <i class="big heartbeat icon" style="margin-bottom: 10px;"></i>
+
+                                <span class="ui big text">{{bmi}}</span>
+
+                                <p class="ui big text" style="padding-left: 25px;">BMI</p>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!--End of Column-->
+
+            <!--Start of Column-->
+            <div class="column">
+                <div class="ui icon header">
+                    <i class="user md icon"></i>
+                {{bmiCategory}}
+
+                </div>
+
+            </div>
+            <!--End of Column-->
+        </div>
+    </div>
+</section>

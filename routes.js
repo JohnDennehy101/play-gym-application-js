@@ -23,7 +23,7 @@ router.get('/member/deletegoal/:id', trainerDashboard.deleteGoal);
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 router.post('/addAssessment', dashboard.addAssessment);
-router.post('/addGoal', dashboard.addGoal);
+router.post('/member/:userid', dashboard.addGoal);
 router.post('/editAccountName', accounts.editAccountName);
 router.post('/editAccountGender', accounts.editAccountGender);
 router.post('/editAccountEmail', accounts.editAccountEmail);
@@ -31,6 +31,5 @@ router.post('/editAccountPassword', accounts.editAccountPassword);
 router.post('/editAccountHeight', accounts.editAccountHeight);
 router.post('/editAccountWeight', accounts.editAccountWeight);
 router.post('/member/:userid/:id', trainerDashboard.addComment);
-router.post('/member/:userid', trainerDashboard.addGoal);
 
 module.exports = router;

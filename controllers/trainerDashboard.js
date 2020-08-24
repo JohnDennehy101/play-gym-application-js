@@ -65,21 +65,6 @@ const trainerDashboard = {
     //Determining if user is at ideal weight or not
     isIdealWeight = memberStats.isIdealBodyWeight(member, orderedAssessments);
     
-   /* if (orderedAssessments.length > 0) {
-      bmi = memberStats.calculateBMI(member, orderedAssessments[0]);
-      bmiCategory = memberStats.determineBMICategory(bmi);
-       isIdealWeight = memberStats.isIdealBodyWeight(member, orderedAssessments[0]);
-    }
-    else {
-      height = member.height;
-            heightSquared = height * height;
-            weight = member.startingWeight;
-            bmi = weight / heightSquared;
-            bmi = Math.floor(bmi * 100) / 100;
-       bmiCategory = memberStats.determineBMICategory(bmi);
-      let assessment = {"weight": member.startingWeight};
-      isIdealWeight = memberStats.isIdealBodyWeight(member, assessment);
-    } */
     
     
     
@@ -111,38 +96,7 @@ const trainerDashboard = {
     memberStore.removeUser(memberId);
     response.redirect('/trainerDashboard');
   },
-  
-  addGoal(request, response) {
-    const member = memberStore.getUserById(request.params.userid);
-    let assessments = assessmentStore.getUserAssessments(member.id);
-    let orderedAssessments = assessments.reverse();
-    let currentMeasurement;
-    let goalStatus;
-     
-   let timeStamp = new Date(request.body.date + "Z"); 
-  let currentDate = new Date();
-
-    //Formatting date
-    let formattedDate = conversion.formatGoalDate(timeStamp);
-    
-    //Getting current measurements and storing relevant info in currentMeasurement variable
-     let bmi;
-    
-    
-      const newGoal = {
-      id: uuid.v1(),
-      userid: member.id,
-      timestamp: formattedDate,
-      measurement: request.body.measurement,
-      currentMeasurement: currentMeasurement,
-      target: Number(request.body.target),
-      status: goalStatus
-    };
-    goalStore.addGoal(newGoal);
-    response.redirect('/member/' + request.params.userid);
-    
-  },
-  
+ 
   deleteGoal (request, response) {
     
     const goal = goalStore.getGoal(request.params.id);

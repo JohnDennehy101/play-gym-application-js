@@ -2,74 +2,8 @@
 
 <section class="ui raised segment">
  
+  {{> memberAnalytics}}
   
-  <section class="ui raised segment">
-    <div class="ui four column stackable center aligned grid">
-
-        <div class="middle aligned row">
-            <!--Start of Column-->
-            <div class="column">
-                <div class="ui icon header">
-                    <i class="user icon"></i>
-                {{makeNameUppercase user.name}}
-                </div>
-
-            </div>
-            <!--End of Column-->
-
-            <!--Start of Column-->
-            <div class="column">
-                <div class="ui icon header">
-                {{#if isIdealWeight}}
-                    <i class="tachometer alternate icon" style="color: green;"></i>
-                    <p class="ui big text">IDEAL WEIGHT</p>
-              
-                {{else}}
-                    <i class="tachometer alternate icon" style="color: red;"></i>
-                    <p class="ui big text">NOT IDEAL WEIGHT</p>
-                {{/if}}
-
-                </div>
-
-            </div>
-            <!--End of Column-->
-
-            <!--Start of Column -->
-            <div class="column">
-
-                <div class="ui items">
-                    <div class="item">
-                        <div class="middle aligned content">
-                            <div class="header">
-                                <i class="big heartbeat icon" style="margin-bottom: 10px;"></i>
-
-                                <span class="ui big text">{{bmi}}</span>
-
-                                <p class="ui big text" style="padding-left: 25px;">BMI</p>
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <!--End of Column-->
-
-            <!--Start of Column-->
-            <div class="column">
-                <div class="ui icon header">
-                    <i class="user md icon"></i>
-                {{bmiCategory}}
-
-                </div>
-
-            </div>
-            <!--End of Column-->
-        </div>
-    </div>
-</section>
   
   <h1 class="ui center aligned header">Goals</h1>
   {{#if goalsSet}}
@@ -133,55 +67,7 @@
   
   
  
- <!--Form for setting goals-->
-  <section class="ui raised segment">
-
-    <form class="ui form" action="/member/{{user.id}}" method="POST">
-        <div class="three fields">
-            <div class="field">
-                <label>Date</label>
-                <input placeholder="DD/MM/YYYY" type="date" name="date">
-              <!--<div class="ui calendar" id="standard_calendar">
-  <div class="ui input left icon">
-    <i class="calendar icon"></i>
-    <input type="text" placeholder="Date/Time" name="date">
-  </div>
-</div>-->
-            </div>
-            <!--<div class="field">
-                <label>Measurement</label>
-                <input placeholder="Metric" type="text" name="measurement">
-            </div>-->
-          <div class="field">
-            <label>Measurement</label>
-<select name="measurement" class="ui fluid search dropdown">
-  <!--<option value="">Skills</option>-->
-<option value="BMI">BMI</option>
-<option value="Ideal Weight">Ideal Weight</option>
-<option value="BMI Category">BMI Category</option>
-<option value="Weight">Weight</option>
-<option value="Chest">Chest</option>
-<option value="Thigh">Thigh</option>
-<option value="Upper Arm">Upper Arm</option>
-<option value="Waist">Waist</option>
-<option value="Hips">Hips</option>
-</select>
-      </div>
-          
-          <div class="field">
-                <label>Target</label>
-                <input placeholder="Target" type="number" name="target">
-            </div>
-        </div>
-      
-      
-      
-      
-      
-
-        <button class="ui blue submit button">Set Goal</button>
-    </form>
-</section> 
+{{> addGoal}}
   
   
   
@@ -207,18 +93,11 @@ The trainer can return to the list of members by clicking the button at the bott
 <section class="ui raised segment">
    {{#if completedAssessments}}
 {{#each assessments}}
-    <!--#{if _assessments.size() > 0}-->
         <table class="ui celled table">
             <thead>
             <tr>
-                <th>Date</th>
-                <th>Weight</th>
-                <th>Chest</th>
-                <th>Thigh</th>
-                <th>Upper Arm</th>
-                <th>Waist</th>
-                <th>Hips</th>
-                <th>Comments</th>
+             
+              {{> assessmentHeader}}
             </tr>
 
             </thead>
@@ -248,7 +127,11 @@ The trainer can return to the list of members by clicking the button at the bott
                 <td>
                 {{hips}}
                 </td>
-                <td>
+               <td>
+              
+              <i class="{{setAssessmentTrend trend}}"></i>
+            </td>
+                <td rows="2">
                 {{comment}}
                 </td>
 
@@ -261,9 +144,6 @@ The trainer can return to the list of members by clicking the button at the bott
 
         </table>
   
- 
-
-    <!--#{/if}-->
 
 
     <form class="ui form" action="/member/{{userid}}/{{id}}" method="POST">
@@ -280,14 +160,7 @@ The trainer can return to the list of members by clicking the button at the bott
    {{else}}
    {{> noCompletedAssessments}}
   {{/if}} 
-<!--#{else}
 
-    #{noAssessmentsCompleted /}
-
-    #{returnToTrainerDashBoard /}
-
-
-#{/else} -->
 </section>
 
 {{> returnToTrainerDashboard}}

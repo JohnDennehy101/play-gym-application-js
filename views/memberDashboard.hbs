@@ -3,73 +3,7 @@
 <section class="ui raised segment">
  
   
-  <section class="ui raised segment">
-    <div class="ui four column stackable center aligned grid">
-
-        <div class="middle aligned row">
-            <!--Start of Column-->
-            <div class="column">
-                <div class="ui icon header">
-                    <i class="user icon"></i>
-                {{makeNameUppercase user.name}}
-                </div>
-
-            </div>
-            <!--End of Column-->
-
-            <!--Start of Column-->
-            <div class="column">
-                <div class="ui icon header">
-                {{#if isIdealWeight}}
-                    <i class="tachometer alternate icon" style="color: green;"></i>
-                    <p class="ui big text">IDEAL WEIGHT</p>
-              
-                {{else}}
-                    <i class="tachometer alternate icon" style="color: red;"></i>
-                    <p class="ui big text">NOT IDEAL WEIGHT</p>
-                {{/if}}
-
-                </div>
-
-            </div>
-            <!--End of Column-->
-
-            <!--Start of Column -->
-            <div class="column">
-
-                <div class="ui items">
-                    <div class="item">
-                        <div class="middle aligned content">
-                            <div class="header">
-                                <i class="big heartbeat icon" style="margin-bottom: 10px;"></i>
-
-                                <span class="ui big text">{{bmi}}</span>
-
-                                <p class="ui big text" style="padding-left: 25px;">BMI</p>
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <!--End of Column-->
-
-            <!--Start of Column-->
-            <div class="column">
-                <div class="ui icon header">
-                    <i class="user md icon"></i>
-                {{bmiCategory}}
-
-                </div>
-
-            </div>
-            <!--End of Column-->
-        </div>
-    </div>
-</section>
+  {{> memberAnalytics}}
   
   
   <h1 class="ui center aligned header">Goals</h1>
@@ -139,185 +73,14 @@
   {{/if}}
   
   
-  <!--Form for setting goals-->
-  <section class="ui raised segment">
+{{> addGoal}}
+ 
+{{> addAssessment}}
 
-    <form class="ui form" action="/addGoal" method="POST">
-        <div class="three fields">
-            <div class="field">
-                <label>Date</label>
-                <input placeholder="DD/MM/YYYY" type="date" name="date">
-              <!--<div class="ui calendar" id="standard_calendar">
-  <div class="ui input left icon">
-    <i class="calendar icon"></i>
-    <input type="text" placeholder="Date/Time" name="date">
-  </div>
-</div>-->
-            </div>
-            <!--<div class="field">
-                <label>Measurement</label>
-                <input placeholder="Metric" type="text" name="measurement">
-            </div>-->
-          <div class="field">
-            <label>Measurement</label>
-<select name="measurement" class="ui fluid search dropdown">
-  <!--<option value="">Skills</option>-->
-<option value="BMI">BMI</option>
-<option value="Ideal Weight">Ideal Weight</option>
-<option value="BMI Category">BMI Category</option>
-<option value="Weight">Weight</option>
-<option value="Chest">Chest</option>
-<option value="Thigh">Thigh</option>
-<option value="Upper Arm">Upper Arm</option>
-<option value="Waist">Waist</option>
-<option value="Hips">Hips</option>
-</select>
-      </div>
-          
-          <div class="field">
-                <label>Target</label>
-                <input placeholder="Target" type="number" name="target">
-            </div>
-        </div>
-      
-      
-      
-      
-      
-
-        <button class="ui blue submit button">Set Goal</button>
-    </form>
-</section>
-  
-  
-  
-  <!--Partial View which is used to display the add assessment component for members -->
-
-<section class="ui raised segment">
-
-    <form class="ui form" action="/addAssessment" method="POST">
-        <div class="two fields">
-            <div class="field">
-                <label>Weight</label>
-                <input placeholder="00.00kg" step="0.01" type="number" name="weight">
-            </div>
-            <div class="field">
-                <label>Chest</label>
-                <input placeholder="00.00cm" type="text" name="chest">
-            </div>
-            <div class="field">
-                <label>Thigh</label>
-                <input placeholder="00.00cm" type="text" name="thigh">
-            </div>
-        </div>
-
-        <div class="three fields">
-            <div class="field">
-                <label>Upper Arm</label>
-                <input placeholder="00.00cm" type="text" name="upperArm">
-            </div>
-            <div class="field">
-                <label>Waist</label>
-                <input placeholder="00.00cm" type="text" name="waist">
-            </div>
-            <div class="field">
-                <label>Hips</label>
-                <input placeholder="00.00cm" type="text" name="hips">
-            </div>
-        </div>
-        <button class="ui blue submit button">Add Assessment</button>
-    </form>
-</section>
-  
-  
-  
-  <!--
-This partial is used to display the assessments with all details to the logged in member.
-All assessments are displayed as the {list items} syntax is utilised to loop through all assessments.
-
-If the timestamp is provided (date and time), this is displayed.
-If the timestamp (date and time) are not provided (from the yaml file) an empty cell is displayed for the date.
-
-If the assessment index is the last one, the 'Trend' cell is empty.
-If the assessment index is less than the assessments ArrayList (and not the last one), a check is made on the assessment
-weight with the previous indexed assessment weight to determine if the weight has increased or decreased since the last
-assessment.
-
-If the assessment weight is less than the previous assessment weight, the 'ui teal tag label' is displayed.
-If the assessment weight is greater than the previous assessment weight, the 'ui red tag label' is displayed.
-If the assessment weight is equal to the previous assessment weight, the 'ui grey tag label' is displayed.
-
-The member can delete individual assessments.
--->
-  
   <h1 class="ui center aligned header">Completed Assessments</h1>
 {{#if completedAssessments}}
   
-<table class="ui celled table">
-    <thead>
-    <tr>
-        <th>Date</th>
-        <th>Weight</th>
-        <th>Chest</th>
-        <th>Thigh</th>
-        <th>Upper Arm</th>
-        <th>Waist</th>
-        <th>Hips</th>
-        <th>Trend</th>
-        <th>Comments</th>
-        <th></th>
-    </tr>
-
-    </thead>
-    <tbody>
-    {{#each assessments}}
-    <tr>
-        
-            <td>
-            {{timestamp}}
-            </td>
-      
-
-
-        <td>
-        {{weight}}
-        </td>
-        <td>
-        {{chest}}
-        </td>
-        <td>
-        {{thigh}}
-        </td>
-        <td>
-        {{upperArm}}
-        </td>
-        <td>
-        {{waist}}
-        </td>
-        <td>
-        {{hips}}
-        </td>
-   
-       
-            <td>
-              
-              <i class="{{setAssessmentTrend trend}}"></i>
-            </td>
-  
-      <td>
-        {{comment}}
-        </td>
-        <td>
-            <a href="/deleteassessment/{{id}}" class="ui icon button">
-                <i class="trash alternate icon"></i>
-            </a>
-        </td>
-
-
-    </tr>
-    {{/each}}
-    </tbody>
-</table>
+{{> assessmentTable}}
   {{else}}
    {{> noCompletedAssessments}}
   {{/if}}
@@ -326,8 +89,4 @@ The member can delete individual assessments.
   
 </section>
 
-<script>
- $('#standard_calendar')
-  .calendar()
-;
-</script>
+{{> goalCalendarScript}}

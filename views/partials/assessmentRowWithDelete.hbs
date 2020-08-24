@@ -1,0 +1,66 @@
+  
+  <!--
+This partial is used to display the assessments with all details to the logged in member.
+All assessments are displayed as the {list items} syntax is utilised to loop through all assessments.
+
+If the timestamp is provided (date and time), this is displayed.
+If the timestamp (date and time) are not provided (from the yaml file) an empty cell is displayed for the date.
+
+If the assessment index is the last one, the 'Trend' cell is empty.
+If the assessment index is less than the assessments ArrayList (and not the last one), a check is made on the assessment
+weight with the previous indexed assessment weight to determine if the weight has increased or decreased since the last
+assessment.
+
+If the assessment weight is less than the previous assessment weight, the 'ui teal tag label' is displayed.
+If the assessment weight is greater than the previous assessment weight, the 'ui red tag label' is displayed.
+If the assessment weight is equal to the previous assessment weight, the 'ui grey tag label' is displayed.
+
+The member can delete individual assessments.
+-->
+{{#each assessments}}
+<tr>
+  
+        
+            <td>
+            {{timestamp}}
+            </td>
+      
+
+
+        <td>
+        {{weight}}
+        </td>
+        <td>
+        {{chest}}
+        </td>
+        <td>
+        {{thigh}}
+        </td>
+        <td>
+        {{upperArm}}
+        </td>
+        <td>
+        {{waist}}
+        </td>
+        <td>
+        {{hips}}
+        </td>
+   
+       
+            <td>
+              
+              <i class="{{setAssessmentTrend trend}}"></i>
+            </td>
+  
+      <td>
+        {{comment}}
+        </td>
+        <td>
+            <a href="/deleteassessment/{{id}}" class="ui icon button">
+                <i class="trash alternate icon"></i>
+            </a>
+        </td>
+
+
+    </tr>
+ {{/each}}

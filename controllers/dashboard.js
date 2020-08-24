@@ -103,9 +103,8 @@ const dashboard = {
   },
   
   addGoal(request, response) {
-    const loggedInUser = accounts.getCurrentUser(request);
-    let assessments = assessmentStore.getUserAssessments(loggedInUser.id);
-    let orderedAssessments = assessments.reverse();
+    let userId = request.params.userid;
+    let loggedInMember;
     let currentMeasurement;
     let goalStatus;
     
@@ -117,13 +116,10 @@ const dashboard = {
   
      let bmi;
 
-    
-   
-    
-    
+
      const newGoal = {
       id: uuid.v1(),
-      userid: loggedInUser.id,
+      userid: userId,
       timestamp: formattedDate,
       measurement: request.body.measurement,
       currentMeasurement: currentMeasurement,
@@ -131,7 +127,17 @@ const dashboard = {
       status: goalStatus
     };
     goalStore.addGoal(newGoal);
-    response.redirect('/dashboard');
+    
+    loggedInMember = accounts.getCurrentUser(request);
+    
+    
+    if (loggedInMember !== undefined) {
+      response.redirect('/dashboard');
+    }
+    else {
+    response.redirect('/member/' + request.params.userid);
+    }
+  
     
     
   },
