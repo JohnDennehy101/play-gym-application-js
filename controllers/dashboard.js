@@ -144,9 +144,23 @@ const dashboard = {
   
   deleteGoal (request, response) {
   const goalId = request.params.id;
+    let goal;
+    let memberId;
+    let loggedInMember;
   logger.info('Assessment to be deleted = ' + goalId);
+    goal = goalStore.getGoal(goalId);
+    memberId = goal.userid;
   goalStore.removeGoal(goalId);
-  response.redirect('/dashboard'); 
+ 
+     loggedInMember = accounts.getCurrentUser(request);
+    
+    
+    if (loggedInMember !== undefined) {
+      response.redirect('/dashboard');
+    }
+    else {
+    response.redirect('/member/' + memberId);
+    }
   },
   
    deleteAssessment(request, response) {

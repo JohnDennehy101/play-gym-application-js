@@ -9,62 +9,7 @@
   <h1 class="ui center aligned header">Goals</h1>
   {{#if goalsSet}}
   <!--Table to display goal segment-->
-  <table class="ui celled table">
-    <thead>
-    <tr>
-        <th>Date</th>
-        <th>Metric</th>
-      <th>Target Measurement</th>
-      <th>Final Measurement</th>
-        <th>Status</th>
-      <th></th>
-    </tr>
-
-    </thead>
-    <tbody>
-      
-      {{#each goals}}
-     
-   
-      <tr class="{{setGoalBackground status}}">
-   
-     
-
-
-        <td>
-       {{formatDate timestamp}}
-        </td>
-        <td>
-     {{measurement}}
-        </td>
-        <td>
-        {{target}}
-        </td>
-      
-        <td>
-     {{finalMeasurement}}
-        </td>
-      
-        <td>
-        {{status}}
-          <i class="{{setGoalIcon status}}">
-        </td>
-          
-           <td>
-            <a href="/deletegoal/{{id}}" class="ui icon button">
-                <i class="trash alternate icon"></i>
-            </a>
-        </td>
-       
-      
-      </tr>
-      
-    
-      {{/each}}
-      
-    </tbody>
-    
-  </table>
+  {{> goalTable}}
   
   {{else}}
   

@@ -94,32 +94,8 @@
           "trend": "Positive"
         }
       ],
-      "status": "Open",
-      "finalMeasurement": "Final measurement yet to be captured."
-    },
-    {
-      "id": "c541ac40-e602-11ea-a16e-fffeed9d99de",
-      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "timestamp": "27-August-2020 23:59:59",
-      "measurement": "Weight",
-      "target": 90,
-      "status": "Open",
-      "latestAssessmentForGoal": [
-        {
-          "id": "84e6eb60-e611-11ea-9560-5102a7061d89",
-          "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-          "weight": 61.3,
-          "chest": 97,
-          "thigh": 78,
-          "upperArm": 86,
-          "waist": 59,
-          "hips": 32,
-          "timestamp": "24-August-2020 14:55:50",
-          "comment": "Good work!",
-          "trend": "Positive"
-        }
-      ],
-      "finalMeasurement": "Final measurement yet to be captured."
+      "status": "Missed",
+      "finalMeasurement": 86
     },
     {
       "id": "57044750-e603-11ea-a806-176336fbdee7",
@@ -218,11 +194,18 @@
       "target": 8
     },
     {
-      "id": "6b4941d0-e61b-11ea-9ca8-350bd22ffda5",
-      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "timestamp": "29-August-2020 23:59:59",
+      "id": "68fc32a0-e61d-11ea-9e3c-8118b73fbb47",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "timestamp": "20-August-2020 23:59:59",
       "measurement": "Thigh",
-      "target": 8,
+      "target": 89
+    },
+    {
+      "id": "f4a733e0-e61d-11ea-a91e-9b8f3cacdd68",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "25-August-2020 23:59:59",
+      "measurement": "Chest",
+      "target": 90,
       "latestAssessmentForGoal": [
         {
           "id": "84e6eb60-e611-11ea-9560-5102a7061d89",
@@ -242,18 +225,65 @@
       "finalMeasurement": "Final measurement yet to be captured."
     },
     {
-      "id": "68fc32a0-e61d-11ea-9e3c-8118b73fbb47",
-      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
-      "timestamp": "20-August-2020 23:59:59",
-      "measurement": "Thigh",
-      "target": 89
+      "id": "a07955d0-e714-11ea-af83-d7e2f5100707",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "15-August-2020 23:59:59",
+      "measurement": "BMI",
+      "target": 24,
+      "status": "Closed",
+      "latestAssessmentForGoal": [
+        {
+          "id": "1d6f9400-d590-11ea-b782-9bf43c853906",
+          "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+          "weight": 92,
+          "chest": 8,
+          "thigh": 8,
+          "upperArm": 8,
+          "waist": 8,
+          "hips": 8,
+          "timestamp": "03-August-2020 14:49:13",
+          "comment": "",
+          "negativeAssessmentTrend": false,
+          "emptyTrendLine": true,
+          "assessmentTrend": false,
+          "trend": "Not Applicable"
+        }
+      ],
+      "finalMeasurement": "No assessments completed before this date."
     },
     {
-      "id": "f4a733e0-e61d-11ea-a91e-9b8f3cacdd68",
+      "id": "abd72fb0-e714-11ea-af83-d7e2f5100707",
       "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "timestamp": "25-August-2020 23:59:59",
+      "timestamp": "15-August-2020 23:59:59",
       "measurement": "Chest",
-      "target": 90
+      "target": 89,
+      "status": "Achieved",
+      "latestAssessmentForGoal": [
+        {
+          "id": "1d6f9400-d590-11ea-b782-9bf43c853906",
+          "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+          "weight": 92,
+          "chest": 8,
+          "thigh": 8,
+          "upperArm": 8,
+          "waist": 8,
+          "hips": 8,
+          "timestamp": "03-August-2020 14:49:13",
+          "comment": "",
+          "negativeAssessmentTrend": false,
+          "emptyTrendLine": true,
+          "assessmentTrend": false,
+          "trend": "Not Applicable"
+        }
+      ],
+      "finalMeasurement": 8
+    },
+    {
+      "id": "180d0f60-e715-11ea-af83-d7e2f5100707",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "timestamp": "18-August-2020 23:59:59",
+      "measurement": "BMI",
+      "target": 34
     }
   ]
 }

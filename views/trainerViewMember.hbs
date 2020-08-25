@@ -7,57 +7,8 @@
   
   <h1 class="ui center aligned header">Goals</h1>
   {{#if goalsSet}}
-  <!--Table to display goal segment-->
-  <table class="ui celled table">
-    <thead>
-    <tr>
-        <th>Date</th>
-        <th>Metric</th>
-      <th>Target Measurement</th>
-      <th>Final Measurement</th>
-        <th>Status</th>
-      <th></th>
-    </tr>
-
-    </thead>
-    <tbody>
-      {{#each goals}}
-    <tr class="{{setGoalBackground status}}">
-
-
-        <td>
-       {{formatDate timestamp}}
-        </td>
-        <td>
-     {{measurement}}
-        </td>
-        <td>
-        {{target}}
-        </td>
-      
-        <td>
-     {{finalMeasurement}}
-        </td>
-      
-        <td>
-        {{status}}
-          <i class="{{setGoalIcon status}}">
-        </td>
-      
-       <td>
-            <a href="/member/deleteGoal/{{id}}" class="ui icon button">
-         
-                <i class="trash alternate icon"></i>
-            </a>
-        </td>
-       
-      
-      </tr>
-      {{/each}}
-      
-    </tbody>
-    
-  </table>
+  
+  {{> goalTable}}
   
   {{else}}
   
@@ -68,11 +19,7 @@
   
  
 {{> addGoal}}
-  
-  
-  
-  
-  
+
 <!--
 
 This component displays the list of member assessments to the trainer (the trainer has selected the
@@ -92,70 +39,9 @@ The trainer can return to the list of members by clicking the button at the bott
  
 <section class="ui raised segment">
    {{#if completedAssessments}}
-{{#each assessments}}
-        <table class="ui celled table">
-            <thead>
-            <tr>
-             
-              {{> assessmentHeader}}
-            </tr>
-
-            </thead>
-            <tbody>
-
-            <tr>
-
-                <td>
-                {{timestamp}}
-                </td>
-
-                <td>
-                {{weight}}
-                </td>
-                <td>
-                {{chest}}
-                </td>
-                <td>
-                {{thigh}}
-                </td>
-                <td>
-               {{upperArm}}
-                </td>
-                <td>
-                {{waist}}
-                </td>
-                <td>
-                {{hips}}
-                </td>
-               <td>
-              
-              <i class="{{setAssessmentTrend trend}}"></i>
-            </td>
-                <td rows="2">
-                {{comment}}
-                </td>
 
 
-            </tr>
-
-
-            </tbody>
-
-
-        </table>
-  
-
-
-    <form class="ui form" action="/member/{{userid}}/{{id}}" method="POST">
-        <div class="field">
-            <label>Comments</label>
-            <input type="text" name="comment" value="{{comment}}">
-        </div>
-
-        <button class="ui blue submit button">Update</button>
-    </form>
-
-{{/each}}
+{{> assessmentTableComment}}
   
    {{else}}
    {{> noCompletedAssessments}}

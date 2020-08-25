@@ -96,17 +96,6 @@ const trainerDashboard = {
     memberStore.removeUser(memberId);
     response.redirect('/trainerDashboard');
   },
- 
-  deleteGoal (request, response) {
-    
-    const goal = goalStore.getGoal(request.params.id);
-    const memberId = goal.userid;
-    
-    goalStore.removeGoal(goal.id);
-   response.redirect('/member/' + memberId);
-  }
-  
-  
   
 }
 
