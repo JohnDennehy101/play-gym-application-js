@@ -91,8 +91,7 @@ const memberStats = {
         } else if (height < 5 && member.gender.toUpperCase().charAt(0) == 'F') {
             optimalFemaleWeight = 45;
         }
-        //Logger.info("Ideal Body Weight or not: " + idealWeight);
-        //member.setIdealWeight(idealWeight);
+    
         return idealWeight;
     },
   
@@ -155,35 +154,17 @@ const memberStats = {
           }
           
        
-        
-        
-         
               assessmentMatch.push(assessmentStore.getAssessmentByDate(orderedAssessments[i].timestamp));
           
          
-           if (assessmentMatch.length > 0) {
-         currentMeasurement = memberStats.calculateBMI(user, goal.latestAssessmentForGoal[0].weight);
-            
-           }
-          else {
-            height = user.height;
-      
-            heightSquared = height * height;
-            weight = user.startingWeight;
-            bmi = weight / heightSquared;
-            bmi = Math.floor(bmi * 100) / 100;
-            currentMeasurement = bmi
-           
-          }
-         
-      
-          
           if (goal.measurement.toLowerCase() === "bmi") {
-           
-            if (assessmentMatch.length > 0 && currentDate < Date.parse(goal.timestamp)) {
+         
+              let bmi = memberStats.calculateBMI(user, goal.latestAssessmentForGoal);
+            console.log(bmi);
+              currentMeasurement = bmi;
+            
     
       if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) < currentDate && currentDate > Date.parse(goal.timestamp) && currentMeasurement <= goal.target) {
-        //goals[2].status = "Achieved";
         goal.status = "Achieved";
         goal.finalMeasurement = currentMeasurement;
         assessmentMatch.splice(0);
@@ -205,10 +186,7 @@ const memberStats = {
     
       }
               
-            } else {
-              goal.status = 'Closed';
-         goal.finalMeasurement = "No assessments completed before this date.";
-            }
+      
     }
           
     
@@ -363,11 +341,7 @@ const memberStats = {
             }
           
         }
-       /* else {
-          goal.status = "Not Applicable";
-          goal.finalMeasurement = "No assessments completed before this date";
-          
-        } */
+       
       }
       
       else {
@@ -377,7 +351,7 @@ const memberStats = {
         } 
         
         
-     // }
+     
     })
     
     return goals;

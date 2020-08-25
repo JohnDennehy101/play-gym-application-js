@@ -8,7 +8,7 @@
       "email": "homer@simpson.com",
       "password": "secret",
       "id": "3ad52697-6d98-4d80-8273-084de55a86c0",
-      "totalAssessments": 4
+      "totalAssessments": 0
     },
     {
       "name": "Marge Simpson",
@@ -18,7 +18,7 @@
       "email": "marge@simpson.com",
       "password": "secret",
       "id": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "totalAssessments": 0
+      "totalAssessments": 8
     },
     {
       "name": "Test4 Test5",
@@ -34,7 +34,7 @@
     {
       "name": "Test Test7",
       "gender": "Male",
-      "email": "000@gmail.com",
+      "email": "001@gmail.com",
       "password": "000",
       "address": "Dublin",
       "height": "1.87",
@@ -50,17 +50,8 @@
       "address": "Dublin",
       "height": "1.76",
       "startingWeight": "90",
-      "id": "4b16c570-d58d-11ea-975a-ab4d82638113"
-    },
-    {
-      "name": "Test Test10",
-      "gender": "Male",
-      "email": "456@gmail.com",
-      "password": "456",
-      "address": "Mallow",
-      "height": "1.84",
-      "startingWeight": "65",
-      "id": "07a28fc0-e467-11ea-a033-ad1b2bf71f78"
+      "id": "4b16c570-d58d-11ea-975a-ab4d82638113",
+      "totalAssessments": 1
     }
   ]
 }

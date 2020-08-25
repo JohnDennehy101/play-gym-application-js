@@ -107,6 +107,7 @@ const accounts = {
     editAccountEmail(request, response) {
        const loggedInUser = accounts.getCurrentUser(request);
       loggedInUser.email = request.body.email;
+      response.cookie('member', loggedInUser.email);
     memberStore.editUser(loggedInUser);
     response.redirect('/viewAccountDetails');
     
