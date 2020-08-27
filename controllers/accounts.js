@@ -21,6 +21,14 @@ const accounts = {
     };
     response.render('login', viewData);
   },
+  
+  loginError (request, response) {
+    const viewData = {
+      title: 'Login to the Service',
+      error: true,
+    };
+    response.render('login', viewData)
+  },
 
   logout(request, response) {
     response.cookie('member', '');
@@ -35,12 +43,81 @@ const accounts = {
   },
 
   register(request, response) {
-    const user = request.body;
+    let invalidName = false;
+    let invalidGender = false;
+    let invalidEmail = false;
+   let invalidPassword = false;
+    let invalidAddress = false;
+    let invalidHeight = false;
+    let invalidWeight = false;
+   let user = request.body;
+  let nameInput;
+  let genderInput;
+  let emailInput;
+    let passwordInput;
+    let addressInput;
+    let heightInput;
+    let weightInput;
+    
+    
+    nameInput = user.name;
+    genderInput = user.gender;
+    emailInput = user.email;
+    addressInput = user.address;
+    heightInput = user.height;
+    weightInput = user.startingWeight;
+    
+    if (user.name.length > 1 && user.gender.length > 1 && (user.gender.charAt(0).toLowerCase() === 'm' || user.gender.charAt(0).toLowerCase() === 'f') && user.email.length > 1 && typeof user.email === 'string' 
+        && (user.email.includes('@')) && user.password.length > 1 && user.address.length > 1 && user.height > 0.1 && user.height <= 2.2 && user.startingWeight >= 1 && user.startingWeight <= 300) {
     user.id = uuid.v1();
     memberStore.addUser(user);
     logger.info(`registering ${user.email}`);
     response.redirect('/');
-  },
+    }
+    if (user.name.length < 1) {
+      console.log(typeof user.name);
+      invalidName = true;
+    }
+    if (user.gender.length < 1 || (user.gender.charAt(0).toLowerCase() !== 'm' || user.gender.charAt(0).toLowerCase() !== 'f')) {
+      invalidGender = true;
+    }
+    if (user.email.length < 1 || typeof user.email !== 'string' || (!user.email.includes('@'))) {
+      invalidEmail = true;
+    }
+    if (user.password.length < 1) {
+      invalidPassword = true;
+    }
+    if (user.address.length < 1) {
+      invalidAddress = true;
+    }
+    if (user.height <= 0.1 || user.height >= 2.2) {
+      invalidHeight = true;
+    }
+    if (user.startingWeight <= 1 || user.startingWeight >= 300) {
+      invalidWeight = true;
+    }
+    
+   
+      const data = {
+        invalidName: invalidName,
+        invalidGender: invalidGender,
+        invalidEmail: invalidEmail,
+        invalidPassword: invalidPassword,
+        invalidAddress: invalidAddress,
+        invalidHeight: invalidHeight,
+        invalidWeight: invalidWeight,
+        invalidInput: true,
+        name: nameInput,
+        gender: genderInput,
+        email: emailInput,
+        address: addressInput,
+        height: heightInput,
+        weight: weightInput
+      }
+      response.render('signup', data);
+    },
+  
+  
 
   authenticate(request, response) {
     const user = memberStore.getUserByEmailAndPassword(request.body.email, request.body.password);
@@ -58,7 +135,7 @@ const accounts = {
     }
     
     else {
-      response.redirect('/login');
+      response.redirect('/loginError');
     }
   },
 

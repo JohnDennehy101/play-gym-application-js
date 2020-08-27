@@ -52,6 +52,16 @@
       "startingWeight": "90",
       "id": "4b16c570-d58d-11ea-975a-ab4d82638113",
       "totalAssessments": 1
+    },
+    {
+      "name": "Harry Kane",
+      "gender": "Male",
+      "email": "harry@gmail.com",
+      "password": "Spurs123",
+      "address": "London",
+      "height": "1.86",
+      "startingWeight": "90",
+      "id": "78a8f8a0-e8ac-11ea-ad63-0d5464f24be7"
     }
   ]
 }
