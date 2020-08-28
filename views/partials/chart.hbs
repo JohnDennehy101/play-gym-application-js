@@ -1,0 +1,263 @@
+<script>
+
+  let assessmentDates = [];
+  let assessmentWeights = [];
+  let assessmentChestMeasurements = [];
+  let assessmentThighMeasurements = [];
+   let assessmentUpperArmMeasurements = [];
+  let assessmentHipMeasurements = [];
+  let assessmentWaistMeasurements = [];
+  
+  
+  var myJSON = $.getJSON( "assessmentStore", function( data ) {
+
+    if (data.length > 0) {
+    for (let i=0; i<data.length; i++) {
+      assessmentDates.push(data[i].timestamp);
+      console.log(data[i].timestamp);
+      assessmentWeights.push(data[i].weight);
+      assessmentChestMeasurements.push(data[i].chest);
+      assessmentThighMeasurements.push(data[i].thigh);
+      assessmentUpperArmMeasurements.push(data[i].upperArm);
+      assessmentHipMeasurements.push(data[i].hips);
+      assessmentWaistMeasurements.push(data[i].waist);
+    }
+    };
+    var weight = document.getElementById('weightChart').getContext('2d');
+    var chest = document.getElementById('chestChart').getContext('2d');
+    var thigh = document.getElementById('thighChart').getContext('2d');
+     var upperArm = document.getElementById('upperArmChart').getContext('2d');
+     var hips = document.getElementById('hipChart').getContext('2d');
+     var waist = document.getElementById('waistChart').getContext('2d');
+    var weightConfig = {
+    type: 'line',
+    data: {
+    labels: getDateData(),
+    datasets: [{ 
+      data: loopThroughAssessments(assessmentWeights),
+        label: "Weight",
+        borderColor: "#3e95cd",
+        fill: false
+      }         
+    ]
+  },
+ options: {
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true,
+            }
+        
+        }],
+    xAxes: [{
+      ticks: {
+         autoSkip: false
+      }
+  }]
+    } 
+  }
+};
+    
+    
+  var thighConfig = {
+    type: 'line',
+    data: {
+    labels: getDateData(),
+    datasets: [
+        {
+        data: loopThroughAssessments(assessmentThighMeasurements),
+        label: "Thigh",
+        borderColor: "#228B22",
+        fill: false
+        }
+        
+    ]
+  },
+ options: {
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true,
+            }
+        
+        }],
+    xAxes: [{
+      ticks: {
+         autoSkip: false
+      }
+  }]
+    } 
+  }
+};
+
+      var chestConfig = {
+    type: 'line',
+    data: {
+    labels: getDateData(),
+    datasets: [
+       {
+        data: loopThroughAssessments(assessmentChestMeasurements),
+        label: "Chest",
+        borderColor: "#FFFF00",
+        fill: false
+       }        
+    ]
+  },
+ options: {
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true,
+            }
+        
+        }],
+    xAxes: [{
+      ticks: {
+         autoSkip: false
+      }
+  }]
+    } 
+  }
+};
+    
+    
+    
+      var upperArmConfig = {
+    type: 'line',
+    data: {
+    labels: getDateData(),
+    datasets: [
+        {
+        data: loopThroughAssessments(assessmentUpperArmMeasurements),
+        label: "Upper Arm",
+        borderColor: "#FF0000",
+        fill: false
+        }
+       
+    ]
+  },
+ options: {
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true,
+            }
+        
+        }],
+    xAxes: [{
+      ticks: {
+         autoSkip: false
+      }
+  }]
+    } 
+  }
+};
+    
+    
+      var hipConfig = {
+    type: 'line',
+    data: {
+    labels: getDateData(),
+    datasets: [
+        {
+        data: loopThroughAssessments(assessmentHipMeasurements),
+        label: "Hip",
+        borderColor: "#FFA500",
+        fill: false
+        }        
+    ]
+  },
+ options: {
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true,
+            }
+        
+        }],
+    xAxes: [{
+      ticks: {
+         autoSkip: false
+      }
+  }]
+    } 
+  }
+};
+    
+    
+      var waistConfig = {
+    type: 'line',
+    data: {
+    labels: getDateData(),
+    datasets: [
+        {data: loopThroughAssessments(assessmentWaistMeasurements),
+        label: "Waist",
+        borderColor: "#808080",
+        fill: false
+        }        
+    ]
+  },
+ options: {
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true,
+            }
+        
+        }],
+    xAxes: [{
+      ticks: {
+         autoSkip: false
+      }
+  }]
+    } 
+  }
+};
+    
+    var weightChart = new Chart(weight, weightConfig);
+     var chestChart = new Chart(chest, chestConfig);
+     var thighChart = new Chart(thigh, thighConfig);
+     var upperArmChart = new Chart(upperArm, upperArmConfig);
+     var hipChart = new Chart(hips, hipConfig);
+     var waistChart = new Chart(waist, waistConfig); 
+     
+  });
+  
+  
+  
+  
+  function loopThroughAssessments(metric) {
+  var data = []
+
+  for(var i=0; i < metric.length; i++) {
+    data.push(metric[i]);
+  }
+
+  return data
+}
+  
+function getDateData() {
+   var data = []
+  for(var i=0; i < assessmentDates.length; i++) {
+    let time = assessmentDates[i].indexOf("-202");
+    let formattedDate = "";
+    
+    
+     formattedDate = assessmentDates[i].substr(0, time);
+       
+    data.push(formattedDate);
+    console.log("Done");
+ 
+  }
+
+  return data 
+  }
+  
+ 
+
+  
+  
+  
+  
+
+</script>

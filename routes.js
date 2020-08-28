@@ -20,6 +20,7 @@ router.get('/signup', accounts.signup);
 router.get('/logout', accounts.logout);
 router.get('/deleteassessment/:id', dashboard.deleteAssessment);
 router.get('/deletegoal/:id', dashboard.deleteGoal);
+router.get('/assessmentStore', dashboard.assessmentData);
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 router.post('/addAssessment', dashboard.addAssessment);

@@ -103,20 +103,6 @@
       "trend": "Neutral"
     },
     {
-      "id": "b43fb6b0-e398-11ea-8074-97122993cbc1",
-      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
-      "weight": 80,
-      "chest": 7,
-      "thigh": 8,
-      "upperArm": 9,
-      "waist": 0,
-      "hips": 7,
-      "timestamp": "21-August-2020 11:25:58",
-      "comment": "Great",
-      "negativeAssessmentTrend": true,
-      "trend": "Negative"
-    },
-    {
       "id": "9c997f00-e460-11ea-95ba-4941a8588a97",
       "userid": "b57a2f40-d341-11ea-a6d7-e1633b3df3f6",
       "weight": 89,

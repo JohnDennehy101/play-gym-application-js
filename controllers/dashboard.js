@@ -170,6 +170,12 @@ const dashboard = {
   response.redirect('/dashboard');
   },
   
+  assessmentData (request, response) {
+    const loggedInUser = accounts.getCurrentUser(request);
+    let assessments = assessmentStore.getUserAssessments(loggedInUser.id);
+    response.send(assessments);
+  }
+  
   
 };
 

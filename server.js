@@ -114,7 +114,25 @@ app.engine(
         } else {
           return "NOT IDEAL WEIGHT";
         }
-      }
+      },
+      validateInput (invalidInput) {
+        if (invalidInput) {
+          return "field error";
+        }
+        else {
+         
+          return "field"
+        }
+      },
+      keepUserInput (input) {
+        if (input !== undefined) {
+          return input;
+        }
+        else {
+          return "";
+        }
+      },
+      
     }
   })
 );
