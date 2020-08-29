@@ -222,7 +222,7 @@ const memberStats = {
       
             }
             
-          else if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) > currentDate) {
+            else if (currentDate < Date.parse(goal.timestamp)) {
            goal.status = "Open";
               goal.finalMeasurement = "Final measurement yet to be captured." 
           }
@@ -240,10 +240,10 @@ const memberStats = {
       }
       
      
-      
+     
    
     })
-    
+   
     return goals;
   },
   
