@@ -9,26 +9,22 @@ const memberStats = require('../utils/member-stats');
 const conversion = require('../utils/conversion');
 
 const dashboard = {
+  //index method renders the dashboard to the logged in member
   index(request, response) {
     logger.info('dashboard rendering');
     const loggedInUser = accounts.getCurrentUser(request);
     let assessments = assessmentStore.getUserAssessments(loggedInUser.id);
     let goals = goalStore.getUserGoals(loggedInUser.id);
-    let goalBMI;
-    let index = 0;
     let orderedAssessments = assessments.reverse();
-     let assessmentsBeforeGoal = [];
-    let match = false;
-   let currentDate = new Date();
+    let assessmentsBeforeGoal = [];
+    let currentDate = new Date();
     let currentMeasurement;
-       let bmi = 0;
+    let bmi = 0;
     let height = 0;
     let heightSquared = 0;
     let weight = 0;
     let bmiCategory;
     let isIdealWeight;
-    let assessmentTrend;
-    let counter = 0;
     let numOfAssessments;
     let numOfGoals;
     let multipleAssessments = false;
@@ -72,16 +68,16 @@ const dashboard = {
       bmi: bmi,
       bmiCategory: bmiCategory,
       isIdealWeight: isIdealWeight,
-      trend: assessmentTrend,
       completedAssessments: numOfAssessments,
       multipleAssessments: multipleAssessments,
       goalsSet: numOfGoals,
       goals: goals
     };
-    //logger.info('about to render', assessmentStore.getAllAssessments());
     response.render('memberDashboard', viewData);
   },
   
+  
+  //Method that allows members to add assessments
     addAssessment(request, response) {
     const loggedInUser = accounts.getCurrentUser(request);
     let currentDate = new Date();
@@ -107,18 +103,15 @@ const dashboard = {
     response.redirect('/dashboard');
   },
   
+  //Method that allows members or trainers to set goals for members
   addGoal(request, response) {
     let userId = request.params.userid;
     let loggedInMember;
     let currentMeasurement;
     let goalStatus;
-    
    let timeStamp = new Date(request.body.date + "Z");
   let currentDate = new Date();
-   
     let formattedDate = conversion.formatGoalDate(timeStamp);
-    
-  
      let bmi;
 
 
@@ -135,10 +128,11 @@ const dashboard = {
     
     loggedInMember = accounts.getCurrentUser(request);
     
-    
+    //If the goal was set by a member, they are redirected to their dashboard
     if (loggedInMember !== undefined) {
       response.redirect('/dashboard');
     }
+    //Otherwise, the trainer set the goal for the member and is redirected to the member dashboard
     else {
     response.redirect('/member/' + request.params.userid);
     }
@@ -147,6 +141,7 @@ const dashboard = {
     
   },
   
+  //Method that allows members or trainers to delete goals for members
   deleteGoal (request, response) {
   const goalId = request.params.id;
     let goal;
@@ -159,15 +154,17 @@ const dashboard = {
  
      loggedInMember = accounts.getCurrentUser(request);
     
-    
+     //If the goal was deleted by a member, they are redirected to their dashboard
     if (loggedInMember !== undefined) {
       response.redirect('/dashboard');
     }
+    //Otherwise, the trainer deleted the goal for the member and is redirected to the member dashboard
     else {
     response.redirect('/member/' + memberId);
     }
   },
   
+  //Allows members to delete assessments
    deleteAssessment(request, response) {
  const assessmentId = request.params.id;
   logger.info('Assessment to be deleted = ' + assessmentId);

@@ -7,14 +7,15 @@ const uuid = require('uuid');
 const assessmentStore = require('../models/assessment-store');
 
 const accounts = {
-
+//First page that is rendered to the user on application load
   index(request, response) {
     const viewData = {
       title: 'Login or Signup',
     };
     response.render('index', viewData);
   },
-
+  
+//Renders the login page
   login(request, response) {
     const viewData = {
       title: 'Login to the Service',
@@ -22,6 +23,7 @@ const accounts = {
     response.render('login', viewData);
   },
   
+  //If the user enters incorrect details, the 'error' item within the viewData object is set to true and the login view is re-rendered.
   loginError (request, response) {
     const viewData = {
       title: 'Login to the Service',
@@ -29,19 +31,28 @@ const accounts = {
     };
     response.render('login', viewData)
   },
-
+  
+//Clearing the value from both the trainer and member cookies when the user logs out
   logout(request, response) {
     response.cookie('member', '');
+    response.cookie('trainer', '');
     response.redirect('/');
   },
-
+  
+//For rendering the signup page to the user
   signup(request, response) {
     const viewData = {
       title: 'Login to the Service',
     };
     response.render('signup', viewData);
   },
-
+  
+/*
+The register method checks to see if the user has entered valid data for each field.
+If they have, the user is registered and redirected to the login page.
+If they have entered invalid data for a field, the 'invalid{{metric}}' is set to true.
+This is then sent to the signup view with any data that the user had already entered.
+*/
   register(request, response) {
     let invalidName = false;
     let invalidGender = false;
@@ -72,10 +83,9 @@ const accounts = {
     user.id = uuid.v1();
     memberStore.addUser(user);
     logger.info(`registering ${user.email}`);
-    response.redirect('/');
+    response.redirect('/login');
     }
     if (user.name.length < 1) {
-      console.log(typeof user.name);
       invalidName = true;
     }
     if (user.gender.length < 1 || (user.gender.charAt(0).toLowerCase() !== 'm' || user.gender.charAt(0).toLowerCase() !== 'f')) {
@@ -118,7 +128,7 @@ const accounts = {
     },
   
   
-
+//The authenticate method checks if the entered login details are associated with an existing member or trainer. If so, they are logged in. If not the user is redirected to the loginError route.
   authenticate(request, response) {
     const user = memberStore.getUserByEmailAndPassword(request.body.email, request.body.password);
     const trainer = trainerStore.getTrainerByEmailAndPassword(request.body.email, request.body.password);
@@ -138,17 +148,20 @@ const accounts = {
       response.redirect('/loginError');
     }
   },
-
+  
+//Method to get current member by using the cookie value and passing this to the memberStore
   getCurrentUser(request) {
     const userEmail = request.cookies.member;
     return memberStore.getUserByEmail(userEmail);
   },
   
+  //Method to get current trainer by using the cookie value and passing this to the memberStore
   getCurrentTrainer(request) {
     const trainerEmail = request.cookies.trainer;
     return memberStore.getUserByEmail(trainerEmail);
   },
   
+  //Renders the account settings view to the member
   accountDetails(request, response) {
     const loggedInUser = accounts.getCurrentUser(request);
     let assessments = assessmentStore.getUserAssessments(loggedInUser.id);
@@ -168,6 +181,7 @@ const accounts = {
     
   },
   
+  //A number of methods to edit each account detail for members. After editing the data, they are redirected to the account settings view.
   editAccountName(request, response) {
      const loggedInUser = accounts.getCurrentUser(request);
     loggedInUser.name = request.body.name;

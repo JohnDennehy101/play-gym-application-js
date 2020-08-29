@@ -18,6 +18,7 @@ app.engine(
     extname: ".hbs",
     defaultLayout: "main",
     helpers: {
+      //Setting assessment text on trainer dashboard (plural vs singular)
      setAssessmentText(numOfAssessments) {
        if (numOfAssessments === 1) {
          return "assessment";
@@ -27,6 +28,7 @@ app.engine(
        }
      },
       
+      //Method used to set the table row class for each goal
     setGoalBackground (status) {
       
      
@@ -45,6 +47,7 @@ app.engine(
       
     },
       
+      //Method used to set the icon for each goal
       setGoalIcon (status) {
         if (status.toLowerCase() === "achieved") {
         return "icon checkmark"
@@ -60,6 +63,7 @@ app.engine(
       }
       },
       
+      //Method used to set the icon for each assessment
       setAssessmentTrend (trend) {
         if (trend.toLowerCase() === "not applicable") {
           return "";
@@ -76,16 +80,19 @@ app.engine(
     
       },
       
+      //Method used to format the date to remove the time from the display
       formatDate (date) {
         let time = date.indexOf("23:59:59");
         date = date.substr(0, time);
         return date;
       },
-      
+    
+      //method to make the user's name uppercase on the dashboard
       makeNameUppercase (name) {
         return name.toUpperCase();
       },
       
+      //Method to format each members'name to the correct format on the trainer dashboard (Format: John ({uppercase}{lowercase}))
       makeFirstLetterOfNameUpperCase (name) {
         let fullName = "";
         let nameComponents = name.split(" ");
@@ -101,6 +108,7 @@ app.engine(
         return fullName;
       },
       
+      //Sets the ideal weight icon colour
       setIdealWeightIconColour (idealWeight) {
         if (idealWeight) {
           return "green";
@@ -108,6 +116,8 @@ app.engine(
           return "red";
         }
       },
+      
+      //sets the ideal weight text
       setIdealWeightText (idealWeight) {
         if (idealWeight) {
           return "IDEAL WEIGHT";
@@ -115,6 +125,8 @@ app.engine(
           return "NOT IDEAL WEIGHT";
         }
       },
+      
+      //Method that sets the field style based on invalid input or not
       validateInput (invalidInput) {
         if (invalidInput) {
           return "field error";
@@ -124,6 +136,8 @@ app.engine(
           return "field"
         }
       },
+      
+      //Returns user input if something was passed in a field
       keepUserInput (input) {
         if (input !== undefined) {
           return input;

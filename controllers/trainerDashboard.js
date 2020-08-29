@@ -8,6 +8,7 @@ const memberStats = require('../utils/member-stats');
 const conversion = require('../utils/conversion');
 
 const trainerDashboard = {
+  //index method is used to render the first view to logged in trainers. All members are displayed in this view with the number of assessments
   index(request, response) {
     let totalAssessments;
     const loggedInTrainer = accounts.getCurrentTrainer(request);
@@ -25,6 +26,7 @@ const trainerDashboard = {
 
   },
   
+  //The viewMember method is used to render the correct dashboard view with each member assessment listed
   viewMember(request, response) {
     const member = memberStore.getUserById(request.params.id);
     let assessments = assessmentStore.getUserAssessments(member.id);
@@ -82,6 +84,7 @@ const trainerDashboard = {
      response.render('trainerViewMember', viewData);
   },
   
+  //Allows trainers to add comments to individual assessments
   addComment(request, response) {
     const member = memberStore.getUserById(request.params.userid);
     const assessment = assessmentStore.getAssessment(request.params.id);
@@ -91,6 +94,7 @@ const trainerDashboard = {
     response.redirect('/member/' + request.params.userid);
   },
   
+  //Allows trainers to delete individual members
   deleteMember(request, response) {
     const memberId = request.params.id;
     memberStore.removeUser(memberId);

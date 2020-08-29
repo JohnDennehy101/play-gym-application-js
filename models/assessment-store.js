@@ -4,7 +4,7 @@ const _ = require('lodash');
 const JsonStore = require('./json-store');
 
 const assessmentStore = {
-
+//Initiating the store
   store: new JsonStore('./models/assessment-store.json', { assessmentCollection: [] }),
   collection: 'assessmentCollection',
 
@@ -40,27 +40,6 @@ const assessmentStore = {
     this.store.save();
   },
 
-  /*addSong(id, song) {
-    const playlist = this.getPlaylist(id);
-    playlist.songs.push(song);
-    
-    let duration = 0;
-    
-    for (let i=0; i< playlist.songs.length; i++) {
-      duration = duration + Number(playlist.songs[i].duration);
-    }
-    
-    playlist.duration = duration;
-    this.store.save();
-  },
-
-  removeSong(id, songId) {
-    const playlist = this.getPlaylist(id);
-    const songs = playlist.songs;
-    _.remove(songs, { id: songId});
-    this.store.save();
-  }, */
-  
     getUserAssessments(userid) {
     return this.store.findBy(this.collection, { userid: userid });
   },

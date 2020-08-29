@@ -14,7 +14,7 @@ let inchesWeight;
 let optimalMaleWeight;
 let optimalFemaleWeight;
 const memberStats = {
- 
+ //Method for calculating a members' BMI
   calculateBMI(member, assessments) {
     let weight;
      height = member.height;
@@ -27,10 +27,9 @@ const memberStats = {
     }
     bmi = weight / heightSquared;
         bmi = Math.round(bmi * 100.0) / 100;
-        //Logger.info("BMI value in GYM UTILITY " + bmi);
         return bmi;
     },
-  
+  //Method for determining a members' BMI category
   determineBMICategory(bmiValue) {
         if (bmiValue < 16) {
             bmiCategory = "SEVERELY UNDERWEIGHT";
@@ -45,11 +44,12 @@ const memberStats = {
         } else {
             bmiCategory = "SEVERELY OBESE";
         }
-        //Logger.info("BMI Category value in GYM UTILITY: " + bmiCategory);
         return bmiCategory;
 
     },
   
+  
+  //Method for determining if the user is at the ideal weight or not (boolean)
   isIdealBodyWeight(member, assessments) {
         idealWeight = false;
      if (assessments.length > 0) {
@@ -94,6 +94,8 @@ const memberStats = {
         return idealWeight;
     },
   
+  
+  //Method for sorting the goals by date
   sortGoals (goals) {
     goals.sort(function (a, b) {
     if (a.timestamp > b.timestamp) {
@@ -108,6 +110,7 @@ const memberStats = {
     return goals;
   },
   
+  //Method for filtering goals so that goals added without a date or target are not displayed to the user
   filterGoals (goals) {
     goals = goals.filter((goal) => {
       return (!goal.timestamp.includes("undefined-NaN") && goal.target !== 0);
@@ -115,7 +118,7 @@ const memberStats = {
     return goals;
   },
   
-  
+  //Method for determining the goal status of each goal and establishing the final measurement for each goal set
   determineGoalsStatus (goals, orderedAssessments, user) {
     let currentDate = new Date();
     let currentMeasurement;
@@ -243,18 +246,15 @@ const memberStats = {
     return goals;
   },
   
+  //Sets goal status to achieved or missed (used in determineGoalsStatus method for goals where the date is < current date)
   setGoalStatus (currentMeasurement, goal) {
     let goalStatus;
-    console.log("Current Measurement: " + " " + currentMeasurement);
         if (currentMeasurement <= goal.target) {
                goalStatus = "Achieved";
-       // goal.finalMeasurement = currentMeasurement; 
               }
               else if (currentMeasurement > goal.target) {
                   goalStatus = "Missed";
-       // goal.finalMeasurement = currentMeasurement;
               }
-    console.log("Goal Status: " + " " +  goalStatus)
     return goalStatus;
   },
   
@@ -311,6 +311,8 @@ const memberStats = {
     return orderedAssessments;
   },
   
+  
+//Method used to determine if the assessment table should be displayed on the dashboard
   calculateNumberOfAssessments (orderedAssessments) {
      if (orderedAssessments.length > 0) {
        return true;
@@ -320,7 +322,7 @@ const memberStats = {
     }
     
   },
-  
+    //Method used to determine if charts should be displayed on the dashboard
    multipleAssessments (assessments) {
      if (assessments.length > 1) {
        return true;
@@ -330,6 +332,7 @@ const memberStats = {
         }
       },
   
+  //Method used to calculated total number of assessments for each member. Used on the trainer dashboard
   calculateTotalAssessmentsFigure (members) {
     members.forEach((member) => {
       member.totalAssessments = assessmentStore.getUserAssessments(member.id).length;
@@ -338,6 +341,7 @@ const memberStats = {
     return members;
   },
   
+  //Method used to determine if the goal table should be displayed on the dashboard
   calculateNumberOfGoals (goals) {
      if (goals.length > 0) {
       return true;

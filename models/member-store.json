@@ -21,39 +21,6 @@
       "totalAssessments": 8
     },
     {
-      "name": "Test4 Test5",
-      "gender": "Female",
-      "email": "123@gmail.com",
-      "password": "123",
-      "address": "Cork",
-      "height": "1.90",
-      "startingWeight": "90",
-      "id": "9ffcf650-d33e-11ea-b47b-d107da23fbd1",
-      "totalAssessments": 4
-    },
-    {
-      "name": "Test Test7",
-      "gender": "Male",
-      "email": "001@gmail.com",
-      "password": "000",
-      "address": "Dublin",
-      "height": "1.87",
-      "startingWeight": "88",
-      "id": "b57a2f40-d341-11ea-a6d7-e1633b3df3f6",
-      "totalAssessments": 2
-    },
-    {
-      "name": "TEST3",
-      "gender": "Male",
-      "email": "111@gmail.com",
-      "password": "111",
-      "address": "Dublin",
-      "height": "1.76",
-      "startingWeight": "90",
-      "id": "4b16c570-d58d-11ea-975a-ab4d82638113",
-      "totalAssessments": 1
-    },
-    {
       "name": "Harry Kane",
       "gender": "Male",
       "email": "harry@gmail.com",
@@ -61,7 +28,8 @@
       "address": "London",
       "height": "1.86",
       "startingWeight": "90",
-      "id": "78a8f8a0-e8ac-11ea-ad63-0d5464f24be7"
+      "id": "78a8f8a0-e8ac-11ea-ad63-0d5464f24be7",
+      "totalAssessments": 2
     }
   ]
 }

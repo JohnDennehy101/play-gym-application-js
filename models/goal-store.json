@@ -499,6 +499,23 @@
       "timestamp": "02-August-2020 23:59:59",
       "measurement": "Thigh",
       "target": 7
+    },
+    {
+      "id": "6f931f30-e9fa-11ea-a48f-b3e0ce14cdba",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "timestamp": "26-August-2020 23:59:59",
+      "measurement": "Chest",
+      "target": 90,
+      "status": "Closed",
+      "latestAssessmentForGoal": [],
+      "finalMeasurement": "No assessments completed before this date."
+    },
+    {
+      "id": "7623b990-e9fa-11ea-a48f-b3e0ce14cdba",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "timestamp": "30-August-2020 23:59:59",
+      "measurement": "Chest",
+      "target": 90
     }
   ]
 }

@@ -3,10 +3,11 @@
 const logger = require("../utils/logger");
 
 const about = {
+  //This method is used to render the about page
   index(request, response) {
     logger.info("about rendering");
     const viewData = {
-      title: "About Playlist 1",
+      title: "About Play Gym",
     };
     response.render("about", viewData);
   },
