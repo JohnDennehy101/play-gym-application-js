@@ -98,10 +98,10 @@ const memberStats = {
   //Method for sorting the goals by date
   sortGoals (goals) {
     goals.sort(function (a, b) {
-    if (a.timestamp > b.timestamp) {
+    if (Date.parse(a.timestamp) > Date.parse(b.timestamp)) {
         return -1;
     }
-    if (b.timestamp > a.timestamp) {
+    if (Date.parse(b.timestamp) > Date.parse(a.timestamp)) {
         return 1;
     }
     return 0;
