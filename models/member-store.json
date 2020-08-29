@@ -21,15 +21,14 @@
       "totalAssessments": 8
     },
     {
-      "name": "Harry Kane",
-      "gender": "Male",
-      "email": "harry@gmail.com",
-      "password": "Spurs123",
-      "address": "London",
-      "height": "1.86",
-      "startingWeight": "90",
-      "id": "78a8f8a0-e8ac-11ea-ad63-0d5464f24be7",
-      "totalAssessments": 2
+     "name": "Lisa Simpson",
+      "height": 1.65,
+      "startingWeight": 63,
+      "gender": "female",
+      "email": "lisa@simpson.com",
+      "password": "secret",
+      "id": "3d7g0019-8xrf-8a38-vn36-bl86g418i651",
+      "totalAssessments": 1 
     }
   ]
 }
