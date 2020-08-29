@@ -31,7 +31,7 @@ app.engine(
       //Method used to set the table row class for each goal
     setGoalBackground (status) {
       
-     
+     if (status !== undefined) {
       if (status.toLowerCase() === "achieved") {
         return "positive"
       }
@@ -41,7 +41,11 @@ app.engine(
       else if (status.toLowerCase() === "closed") {
         return "warning"
       }
-      else {
+     
+       
+     }
+      
+       else {
         return "negative"
       }
       
