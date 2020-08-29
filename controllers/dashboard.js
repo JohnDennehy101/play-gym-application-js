@@ -31,6 +31,7 @@ const dashboard = {
     let counter = 0;
     let numOfAssessments;
     let numOfGoals;
+    let multipleAssessments = false;
     
     //Sort Assessments by Date
     goals = memberStats.sortGoals(goals);
@@ -47,6 +48,9 @@ const dashboard = {
     
     //Determining if the user has completed assessments or not
    numOfAssessments = memberStats.calculateNumberOfAssessments (orderedAssessments);
+    
+    //Determining if multiple assessments have been completed or not
+    multipleAssessments = memberStats.multipleAssessments(orderedAssessments);
     
     //Determining if the user/trainer has set goals for the user or not
     numOfGoals = memberStats.calculateNumberOfGoals(goals);
@@ -70,6 +74,7 @@ const dashboard = {
       isIdealWeight: isIdealWeight,
       trend: assessmentTrend,
       completedAssessments: numOfAssessments,
+      multipleAssessments: multipleAssessments,
       goalsSet: numOfGoals,
       goals: goals
     };

@@ -192,6 +192,44 @@
       "timestamp": "24-August-2020 14:55:50",
       "comment": "Fantastic effort",
       "trend": "Positive"
+    },
+    {
+      "id": "6f226560-e9e1-11ea-8c48-b7801acaf502",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "weight": 61.3,
+      "chest": 95,
+      "thigh": 80,
+      "upperArm": 88,
+      "waist": 70,
+      "hips": 33,
+      "timestamp": "29-August-2020 11:21:42",
+      "comment": "",
+      "trend": "Neutral"
+    },
+    {
+      "id": "eef2b440-e9e4-11ea-8c48-b7801acaf502",
+      "userid": "78a8f8a0-e8ac-11ea-ad63-0d5464f24be7",
+      "weight": 86,
+      "chest": 33,
+      "thigh": 32,
+      "upperArm": 35,
+      "waist": 33,
+      "hips": 31,
+      "timestamp": "29-August-2020 11:46:45",
+      "comment": "",
+      "trend": "Not Applicable"
+    },
+    {
+      "id": "1d46a3a0-e9e6-11ea-9eb9-75faaaf6f6b6",
+      "userid": "78a8f8a0-e8ac-11ea-ad63-0d5464f24be7",
+      "weight": 87,
+      "chest": 31,
+      "thigh": 29,
+      "upperArm": 32,
+      "waist": 33,
+      "hips": 31,
+      "timestamp": "29-August-2020 11:55:13",
+      "comment": ""
     }
   ]
 }

@@ -414,6 +414,15 @@ const memberStats = {
     
   },
   
+   multipleAssessments (assessments) {
+     if (assessments.length > 1) {
+       return true;
+     }  
+        else {
+          return false;
+        }
+      },
+  
   calculateTotalAssessmentsFigure (members) {
     members.forEach((member) => {
       member.totalAssessments = assessmentStore.getUserAssessments(member.id).length;

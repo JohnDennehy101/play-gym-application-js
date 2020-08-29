@@ -26,12 +26,9 @@
 {{#if completedAssessments}}
   
 {{> assessmentTable}}
-  <canvas id="weightChart" width="400" height="400"></canvas>
-  <canvas id="chestChart" width="400" height="400"></canvas>
-  <canvas id="thighChart" width="400" height="400"></canvas>
-   <canvas id="upperArmChart" width="400" height="400"></canvas>
-   <canvas id="hipChart" width="400" height="400"></canvas>
-   <canvas id="waistChart" width="400" height="400"></canvas>
+  {{#if multipleAssessments}}
+  {{> assessmentCharts}}
+  {{/if}}
  
   {{else}}
    {{> noCompletedAssessments}}
