@@ -1,5 +1,5 @@
-  <!--Form for setting goals-->
-  <section class="ui raised segment">
+<!--Form for setting goals-->
+<section class="ui raised segment">
 
     <!--<form class="ui form" action="/addGoal" method="POST">-->
     <form class="ui form" action="/member/{{user.id}}" method="POST">
@@ -7,32 +7,32 @@
             <div class="field">
                 <label>Date</label>
                 <input placeholder="DD/MM/YYYY" type="date" name="date">
-         
+
             </div>
-           
-          <div class="field">
-            <label>Measurement</label>
-<select name="measurement" class="ui fluid search dropdown">
-<option value="BMI">BMI</option>
-<option value="Weight">Weight</option>
-<option value="Chest">Chest</option>
-<option value="Thigh">Thigh</option>
-<option value="Upper Arm">Upper Arm</option>
-<option value="Waist">Waist</option>
-<option value="Hips">Hips</option>
-</select>
-      </div>
-          
-          <div class="field">
+
+            <div class="field">
+                <label>Measurement</label>
+                <select name="measurement" class="ui fluid search dropdown">
+                    <option value="BMI">BMI</option>
+                    <option value="Weight">Weight</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Thigh">Thigh</option>
+                    <option value="Upper Arm">Upper Arm</option>
+                    <option value="Waist">Waist</option>
+                    <option value="Hips">Hips</option>
+                </select>
+            </div>
+
+            <div class="field">
                 <label>Target</label>
                 <input placeholder="Target" step="0.01" type="number" name="target">
             </div>
         </div>
-      
-      
-      
-      
-      
+
+
+
+
+
 
         <button class="ui blue submit button">Set Goal</button>
     </form>

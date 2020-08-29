@@ -1,12 +1,11 @@
-'use strict';
+"use strict";
 
-const _ = require('lodash');
-const JsonStore = require('./json-store');
+const _ = require("lodash");
+const JsonStore = require("./json-store");
 
 const goalStore = {
-
-  store: new JsonStore('./models/goal-store.json', { goalCollection: [] }),
-  collection: 'goalCollection',
+  store: new JsonStore("./models/goal-store.json", { goalCollection: [] }),
+  collection: "goalCollection",
 
   getAllGoals() {
     return this.store.findAll(this.collection);
@@ -20,7 +19,7 @@ const goalStore = {
     this.store.add(this.collection, goal);
     this.store.save();
   },
-  
+
   editGoal(goal) {
     this.store.save();
   },
@@ -35,8 +34,8 @@ const goalStore = {
     this.store.removeAll(this.collection);
     this.store.save();
   },
-  
-    getUserGoals(userid) {
+
+  getUserGoals(userid) {
     return this.store.findBy(this.collection, { userid: userid });
   },
 };

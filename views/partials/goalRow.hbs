@@ -1,31 +1,31 @@
-  <!--Row with data for each goal on goal table -->
+<!--Row with data for each goal on goal table -->
 <tr class="{{setGoalBackground status}}">
-   
- 
-        <td>
-       {{formatDate timestamp}}
-        </td>
-        <td>
-     {{measurement}}
-        </td>
-        <td>
-        {{target}}
-        </td>
-      
-        <td>
-     {{finalMeasurement}}
-        </td>
-      
-        <td>
-        {{status}}
-          <i class="{{setGoalIcon status}}">
-        </td>
-          
-           <td>
-            <a href="/deletegoal/{{id}}" class="ui icon button">
-                <i class="trash alternate icon"></i>
-            </a>
-        </td>
-       
-      
-      </tr>
+
+
+  <td>
+    {{formatDate timestamp}}
+  </td>
+  <td>
+    {{measurement}}
+  </td>
+  <td>
+    {{target}}
+  </td>
+
+  <td>
+    {{finalMeasurement}}
+  </td>
+
+  <td>
+    {{status}}
+    <i class="{{setGoalIcon status}}">
+  </td>
+
+  <td>
+    <a href="/deletegoal/{{id}}" class="ui icon button">
+      <i class="trash alternate icon"></i>
+    </a>
+  </td>
+
+
+</tr>

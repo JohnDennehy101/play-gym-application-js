@@ -126,12 +126,14 @@ const memberStats = {
       goal.latestAssessmentForGoal = [];
     
      if (orderedAssessments.length === 0 && currentDate < Date.parse(goal.timestamp)) {
+       console.log(orderedAssessments.length);
           goal.status = 'Open';
          goal.finalMeasurement = "Final measurement yet to be captured."
           }
       
     
       else if (orderedAssessments.length === 0 && currentDate > Date.parse(goal.timestamp)) {
+        console.log(orderedAssessments.length);
         goal.status = 'Closed';
          goal.finalMeasurement = "No assessments completed before this date.";
       }
@@ -217,28 +219,27 @@ const memberStats = {
                 goal.finalMeasurement = memberStats.setGoalFinalMeasurement(currentMeasurement);
             
             }
-            
-                else {
-        goal.status = "Open";
-              goal.finalMeasurement = "Final measurement yet to be captured."
-          
-    
-      }
-              
+      
             }
-          
+            
+          else if (Date.parse(goal.latestAssessmentForGoal[0].timestamp) > currentDate) {
+           goal.status = "Open";
+              goal.finalMeasurement = "Final measurement yet to be captured." 
+          }
      
           
         }
         
-       else {
+      else {
               goal.status = 'Closed';
          goal.finalMeasurement = "No assessments completed before this date.";
-            } 
+            }  
           
         }
        
       }
+      
+     
       
    
     })
@@ -249,12 +250,14 @@ const memberStats = {
   //Sets goal status to achieved or missed (used in determineGoalsStatus method for goals where the date is < current date)
   setGoalStatus (currentMeasurement, goal) {
     let goalStatus;
+    
         if (currentMeasurement <= goal.target) {
                goalStatus = "Achieved";
               }
               else if (currentMeasurement > goal.target) {
                   goalStatus = "Missed";
               }
+    console.log(goalStatus);
     return goalStatus;
   },
   

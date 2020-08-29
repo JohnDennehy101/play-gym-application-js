@@ -1,48 +1,48 @@
 <!--Partial used to loop through the assessments and display them to the user. The member can delete individual assessments -->
 {{#each assessments}}
 <tr>
-  
-        
-            <td>
-            {{timestamp}}
-            </td>
-      
 
 
-        <td>
+    <td>
+        {{timestamp}}
+    </td>
+
+
+
+    <td>
         {{weight}}
-        </td>
-        <td>
+    </td>
+    <td>
         {{chest}}
-        </td>
-        <td>
+    </td>
+    <td>
         {{thigh}}
-        </td>
-        <td>
+    </td>
+    <td>
         {{upperArm}}
-        </td>
-        <td>
+    </td>
+    <td>
         {{waist}}
-        </td>
-        <td>
+    </td>
+    <td>
         {{hips}}
-        </td>
-   
-       
-            <td>
-              
-              <i class="{{setAssessmentTrend trend}}"></i>
-            </td>
-  
-      <td>
+    </td>
+
+
+    <td>
+
+        <i class="{{setAssessmentTrend trend}}"></i>
+    </td>
+
+    <td>
         {{comment}}
-        </td>
-        <td>
-            <a href="/deleteassessment/{{id}}" class="ui icon button">
-                <i class="trash alternate icon"></i>
-            </a>
-        </td>
+    </td>
+    <td>
+        <a href="/deleteassessment/{{id}}" class="ui icon button">
+            <i class="trash alternate icon"></i>
+        </a>
+    </td>
 
 
-    </tr>
- {{/each}}
+</tr>
+{{/each}}

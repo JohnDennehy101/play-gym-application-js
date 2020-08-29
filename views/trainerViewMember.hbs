@@ -1,41 +1,41 @@
 {{> trainerMenu id='trainerMenu' }}
 
 <section class="ui raised segment">
- 
+
   {{> memberAnalytics}}
-  
-  
+
+
   <h1 class="ui center aligned header">Goals</h1>
   {{#if goalsSet}}
-  
+
   {{> goalTable}}
-  
+
   {{else}}
-  
+
   {{> noGoalsSet}}
-  
+
   {{/if}}
-  
-  
- 
-{{> addGoal}}
 
 
-<h1 class="ui center aligned header">Completed Assessments</h1>
- 
-<section class="ui raised segment">
-   {{#if completedAssessments}}
+
+  {{> addGoal}}
 
 
-{{> assessmentTableComment}}
-  
-   {{else}}
-   {{> noCompletedAssessments}}
-  {{/if}} 
+  <h1 class="ui center aligned header">Completed Assessments</h1>
 
-</section>
+  <section class="ui raised segment">
+    {{#if completedAssessments}}
 
-{{> returnToTrainerDashboard}}
-  
-  
+
+    {{> assessmentTableComment}}
+
+    {{else}}
+    {{> noCompletedAssessments}}
+    {{/if}}
+
+  </section>
+
+  {{> returnToTrainerDashboard}}
+
+
 </section>

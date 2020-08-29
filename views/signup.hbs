@@ -36,28 +36,31 @@ The sign up page allows new members to register.
             <div class="two fields">
                 <div class="{{validateInput invalidHeight}}">
                     <label>Height</label>
-                    <input placeholder="Height (Range: 0.1 - 2.2 metres)" step="0.01" type="number" name="height" value="{{keepUserInput height}}">
+                    <input placeholder="Height (Range: 0.1 - 2.2 metres)" step="0.01" type="number" name="height"
+                        value="{{keepUserInput height}}">
                 </div>
                 <div class="{{validateInput invalidWeight}}">
                     <label>Starting Weight</label>
-                    <input placeholder="Weight (Range: 1 - 300 lbs)" type="number" step="0.01" name="startingWeight" value="{{keepUserInput weight}}">
+                    <input placeholder="Weight (Range: 1 - 300 lbs)" type="number" step="0.01" name="startingWeight"
+                        value="{{keepUserInput weight}}">
                 </div>
             </div>
             <button class="ui blue submit button">Submit</button>
         </form>
-      
-      {{#if invalidInput}}
-       <div class="ui error message">
-    <div class="header">Invalid Input</div>
-    <p>Please provide valid input for the highlighted fields.</p>
-  </div>
-      {{/if}}
+
+        {{#if invalidInput}}
+        <div class="ui error message">
+            <div class="header">Invalid Input</div>
+            <p>Please provide valid input for the highlighted fields.</p>
+        </div>
+        {{/if}}
     </div>
     <!--End of column-->
 
     <!--Start of column-->
     <div class="column">
-        <img class="ui image" src="https://cdn.glitch.com/0a0827f0-515d-4bba-8237-feb833061164%2Fd4a53912-0235-47db-8a42-80eb206df4ab.image.png?v=1595173853074">
+        <img class="ui image"
+            src="https://cdn.glitch.com/0a0827f0-515d-4bba-8237-feb833061164%2Fd4a53912-0235-47db-8a42-80eb206df4ab.image.png?v=1595173853074">
     </div>
     <!--End of column-->
 </div>

@@ -1,23 +1,23 @@
 <!--Table used to display assessments to trainers -->
 {{#each assessments}}
-        <table class="ui celled table">
-            <thead>
-    
-              {{> assessmentHeader}}
-        
-            </thead>
-            <tbody>
+<table class="ui celled table">
+     <thead>
 
-       {{> assessmentRow}}
+          {{> assessmentHeader}}
 
+     </thead>
+     <tbody>
 
-            </tbody>
+          {{> assessmentRow}}
 
 
-        </table>
-  
+     </tbody>
 
 
-   {{> addAssessmentComment}}
+</table>
+
+
+
+{{> addAssessmentComment}}
 
 {{/each}}

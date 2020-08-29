@@ -230,6 +230,43 @@
       "hips": 31,
       "timestamp": "29-August-2020 11:55:13",
       "comment": ""
+    },
+    {
+      "id": "fac014d0-ea10-11ea-8019-9b854e1f53b4",
+      "userid": "49dd07e0-ea10-11ea-bd77-e9c7dc82f68b",
+      "weight": 56,
+      "chest": 78,
+      "thigh": 67,
+      "upperArm": 78,
+      "waist": 67,
+      "hips": 87,
+      "timestamp": "29-August-2020 17:02:03",
+      "comment": "",
+      "trend": "Not Applicable"
+    },
+    {
+      "id": "090cdbd0-ea12-11ea-b82c-d78743db632b",
+      "userid": "f5809610-ea11-11ea-b82c-d78743db632b",
+      "weight": 79,
+      "chest": 67,
+      "thigh": 68,
+      "upperArm": 43,
+      "waist": 55,
+      "hips": 78,
+      "timestamp": "29-August-2020 17:09:37",
+      "comment": ""
+    },
+    {
+      "id": "7da09bd0-ea12-11ea-88a2-d37a21658ea4",
+      "userid": "7424ef70-ea12-11ea-88a2-d37a21658ea4",
+      "weight": 89,
+      "chest": 78,
+      "thigh": 89,
+      "upperArm": 78,
+      "waist": 78,
+      "hips": 78,
+      "timestamp": "29-August-2020 17:12:52",
+      "comment": ""
     }
   ]
 }

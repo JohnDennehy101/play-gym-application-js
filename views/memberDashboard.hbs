@@ -1,48 +1,45 @@
- {{> memberMenu id='userMenu' }}
+{{> memberMenu id='userMenu' }}
 
 <section class="ui raised segment">
- 
-  
+
+
   {{> memberAnalytics}}
-  
-  
+
+
   <h1 class="ui center aligned header">Goals</h1>
   {{#if goalsSet}}
   <!--Table to display goal segment-->
   {{> goalTable}}
-  
+
   {{else}}
-  
+
   {{> noGoalsSet}}
-  
+
   {{/if}}
-  
-  
-{{> addGoal}}
- 
-{{> addAssessment}}
+
+
+  {{> addGoal}}
+
+  {{> addAssessment}}
 
   <h1 class="ui center aligned header">Completed Assessments</h1>
-{{#if completedAssessments}}
-  
-{{> assessmentTable}}
+  {{#if completedAssessments}}
+
+  {{> assessmentTable}}
   {{#if multipleAssessments}}
   {{> assessmentCharts}}
   {{/if}}
- 
+
   {{else}}
-   {{> noCompletedAssessments}}
+  {{> noCompletedAssessments}}
   {{/if}}
-  
-  
-    
+
+
+
   </button>
 
-{{> chart}}
-  
+  {{> chart}}
+
 </section>
 
 {{> goalCalendarScript}}
-
-
-

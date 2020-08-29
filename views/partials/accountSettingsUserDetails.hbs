@@ -1,98 +1,97 @@
 <!--Partial used to display the user's account settings -->
 <div class="ui three column divided grid">
-        <!--Start of row-->
-        <div class="stretched row">
-            <!--Start of column-->
-            <div class="column">
-                <div class="ui segment">
-                    <img class="ui image" src="https://cdn.glitch.com/0a0827f0-515d-4bba-8237-feb833061164%2Fuserpage.png?v=1596036911136">
-                </div>
+    <!--Start of row-->
+    <div class="stretched row">
+        <!--Start of column-->
+        <div class="column">
+            <div class="ui segment">
+                <img class="ui image"
+                    src="https://cdn.glitch.com/0a0827f0-515d-4bba-8237-feb833061164%2Fuserpage.png?v=1596036911136">
             </div>
-            <!--End of column-->
+        </div>
+        <!--End of column-->
 
-            <!--Start of column-->
-            <div class="column">
-                <div class="ui segment">
+        <!--Start of column-->
+        <div class="column">
+            <div class="ui segment">
 
-                    <h2 class="ui center aligned icon header">
-                        <i class="circular users icon"></i>
+                <h2 class="ui center aligned icon header">
+                    <i class="circular users icon"></i>
                     {{user.name}}
 
 
-                    </h2>
-                    <h3 class="ui center aligned header">{{user.email}}</h3>
+                </h2>
+                <h3 class="ui center aligned header">{{user.email}}</h3>
 
 
-                </div>
-                <div class="ui segment">
-
-
-                    <div class="ui center aligned icon header">
-
-                        <i class="user outline icon"></i>{{user.gender}}
-                    </div>
-
-
-                </div>
             </div>
-            <!--End of column-->
+            <div class="ui segment">
 
-            <!--Start of column-->
-            <div class="column">
-                <div class="ui segment">
-                    <div class="ui horizontal statistics">
-                        <div class="statistic">
-                            <div class="value">
-                                <i class="weight icon" style="padding-right: 10px;"></i> {{user.startingWeight}}
-                            </div>
-                            <div class="label">
-                                Starting Weight (kgs)
-                            </div>
-                        </div>
-                    </div>
 
+                <div class="ui center aligned icon header">
+
+                    <i class="user outline icon"></i>{{user.gender}}
                 </div>
-                <div class="ui segment">
-                    <div class="ui horizontal statistics">
-                        <div class="statistic">
-                            <div class="value">
-                                <i class="dna icon" style="padding-right: 10px;"></i>{{user.height}}
-                            </div>
-                            <div class="label">
-                                Height (metres)
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui segment">
-
-                    <div class="ui horizontal statistics">
-                        <div class="statistic">
-                        {{#if singularCondition}}
-                            <div class="value">
-                                <i class="plus square outline icon"
-                                   style="padding-right: 10px;"></i> {{assessments}}
-                            </div>
-                            <div class="label">
-                                Assessment Completed
-                            </div>
-                       
-                        {{else}}
-                            <div class="value">
-                                <i class="plus square outline icon"
-                                   style="padding-right: 10px;"></i>{{assessments}}
-                            </div>
-                            <div class="label">
-                                Assessments Completed
-                            </div>
-                        {{/if}}
-                        </div>
-                    </div>
 
 
-                </div>
             </div>
-            <!--End of column-->
         </div>
-        <!--End of row-->
+        <!--End of column-->
+
+        <!--Start of column-->
+        <div class="column">
+            <div class="ui segment">
+                <div class="ui horizontal statistics">
+                    <div class="statistic">
+                        <div class="value">
+                            <i class="weight icon" style="padding-right: 10px;"></i> {{user.startingWeight}}
+                        </div>
+                        <div class="label">
+                            Starting Weight (kgs)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ui segment">
+                <div class="ui horizontal statistics">
+                    <div class="statistic">
+                        <div class="value">
+                            <i class="dna icon" style="padding-right: 10px;"></i>{{user.height}}
+                        </div>
+                        <div class="label">
+                            Height (metres)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui segment">
+
+                <div class="ui horizontal statistics">
+                    <div class="statistic">
+                        {{#if singularCondition}}
+                        <div class="value">
+                            <i class="plus square outline icon" style="padding-right: 10px;"></i> {{assessments}}
+                        </div>
+                        <div class="label">
+                            Assessment Completed
+                        </div>
+
+                        {{else}}
+                        <div class="value">
+                            <i class="plus square outline icon" style="padding-right: 10px;"></i>{{assessments}}
+                        </div>
+                        <div class="label">
+                            Assessments Completed
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--End of column-->
     </div>
+    <!--End of row-->
+</div>

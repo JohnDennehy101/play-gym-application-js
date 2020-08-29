@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
-const _ = require('lodash');
-const JsonStore = require('./json-store');
+const _ = require("lodash");
+const JsonStore = require("./json-store");
 
 const assessmentStore = {
-//Initiating the store
-  store: new JsonStore('./models/assessment-store.json', { assessmentCollection: [] }),
-  collection: 'assessmentCollection',
+  //Initiating the store
+  store: new JsonStore("./models/assessment-store.json", { assessmentCollection: [] }),
+  collection: "assessmentCollection",
 
   getAllAssessments() {
     return this.store.findAll(this.collection);
@@ -15,7 +15,7 @@ const assessmentStore = {
   getAssessment(id) {
     return this.store.findOneBy(this.collection, { id: id });
   },
-  
+
   getAssessmentByDate(timestamp) {
     return this.store.findOneBy(this.collection, { timestamp: timestamp });
   },
@@ -24,7 +24,7 @@ const assessmentStore = {
     this.store.add(this.collection, assessment);
     this.store.save();
   },
-  
+
   editAssessment(assessment) {
     this.store.save();
   },
@@ -40,7 +40,7 @@ const assessmentStore = {
     this.store.save();
   },
 
-    getUserAssessments(userid) {
+  getUserAssessments(userid) {
     return this.store.findBy(this.collection, { userid: userid });
   },
 };

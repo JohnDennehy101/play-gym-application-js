@@ -1,12 +1,11 @@
-'use strict';
+"use strict";
 
-const _ = require('lodash');
-const JsonStore = require('./json-store');
+const _ = require("lodash");
+const JsonStore = require("./json-store");
 
 const memberStore = {
-
-  store: new JsonStore('./models/member-store.json', { users: [] }),
-  collection: 'users',
+  store: new JsonStore("./models/member-store.json", { users: [] }),
+  collection: "users",
 
   getAllUsers() {
     return this.store.findAll(this.collection);
@@ -16,11 +15,11 @@ const memberStore = {
     this.store.add(this.collection, user);
     this.store.save();
   },
-  
+
   editUser(user) {
-     this.store.save();
+    this.store.save();
   },
-  
+
   removeUser(id) {
     const user = this.getUserById(id);
     this.store.remove(this.collection, user);
@@ -34,8 +33,8 @@ const memberStore = {
   getUserByEmailAndPassword(email, password) {
     return this.store.findOneBy(this.collection, { email: email, password: password });
   },
-  getUserByEmail (email) {
-    return this.store.findOneBy(this.collection, { email: email});
+  getUserByEmail(email) {
+    return this.store.findOneBy(this.collection, { email: email });
   },
 };
 
