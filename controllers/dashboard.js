@@ -103,7 +103,7 @@ const dashboard = {
     let userId = request.params.userid;
     let loggedInMember;
     let currentMeasurement;
-    let goalStatus;
+    let goalStatus = "";
     let timeStamp = new Date(request.body.date + "Z");
     let currentDate = new Date();
     let formattedDate = conversion.formatGoalDate(timeStamp);
