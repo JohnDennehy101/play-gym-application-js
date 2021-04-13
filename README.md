@@ -25,6 +25,32 @@ Trainers can also delete member accounts.
 ## Setup
 Here's a link to the live version of the site: [Site Link](https://play-gym-javascript.herokuapp.com)
 
+For installation, navigate to a terminal window and enter the below command. This will download the project to your local machine.
+
+```bash
+git clone https://github.com/JohnDennehy101/play-gym-application-js 
+```
+
+Once installed, navigate to the root project folder
+```bash
+cd play-gym-application-js
+```
+
+To run the project, the node modules need to be installed.
+
+```npm
+npm install
+```
+
+Once that is completed, the project can be launched locally.
+
+```npm
+npm start
+```
+
+This will start the project on localhost. The relevant port number will be printed to the terminal window.
+Open a browser and enter http://localhost:{port number here} in the browser address bar.
+
 ## Features
 List of features ready and TODOs for future development
 * User signup and login
